@@ -1,0 +1,94 @@
+﻿{% extends 'users/login.html' %}
+
+
+{% block elink %}
+
+<a id = 'link' href = '{% url "users:login_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > or Login to your wallet </button> </a>
+
+{% endblock %}
+
+
+
+
+{% block peptalk %}
+Create an account , get verified , get a wallet and start depositing payments, it's that simple!
+{% endblock %}
+
+
+{% block pitch %}
+<div class = 'container login-form mt-4 px-4'>
+
+
+<h3 class = 'create-wallet my-4 text-primary px-2 '> Create a wallet  </h3>
+
+{% if msg %}
+
+<div class = 'msg' >
+
+{{ msg }}
+
+</div>
+
+{% endif %}
+
+
+
+<form method = 'post' action = '{% url "users:create_view" %}' >
+
+{% csrf_token %}
+
+
+<div class = 'form-group' >
+<label for = 'fname' > {{ form.fname.label }} </label>
+<input id = 'fname' class  = 'form-control form-control-lg' required type = 'text' name = {{ form.fname.name }} />
+<small class = 'info' > {{ form.fname.errors }} </small>
+</div>
+
+
+
+
+<div class = 'form-group' >
+<label for = 'lname' > {{ form.lname.label }} </label>
+<input id = 'lname' class  = 'form-control form-control-lg' required type = 'text' name = {{ form.lname.name }} />
+<small class = 'info' > {{ form.lname.errors }} </small>
+</div>
+
+
+
+<div class = 'form-group' >
+<label for = 'email' > {{ form.email.name }} </label>
+<input id = 'email' class  = 'form-control form-control-lg' required type = 'email' name = {{ form.email.name }} />
+<small class = 'info' > {{ form.email.errors }} </small>
+</div>
+
+
+
+<div class = 'form-group' >
+<label for = 'password1' > {{ form.password1.label }} </label>
+<input id = 'password1' class  = 'form-control form-control-lg' required type = 'password' name = {{ form.password1.name }} />
+<small class = 'info' > {{ form.password1.errors }} </small>
+</div>
+
+
+
+<div class = 'form-group' >
+<label for = 'password2' > {{ form.password2.label }} </label>
+<input id = 'password2' class  = 'form-control form-control-lg' required type = 'password' name = {{ form.password2.name }} />
+<small class = 'info' > {{ form.password2.errors }} </small>
+</div>
+
+
+<input class = 'd-block mx-auto mt-4 py-3 btn w-75 btn-primary 'type = 'submit' />
+</form>
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,343 @@
+﻿﻿
+
+<!DOCTYPE html>
+<html lang = 'en-US'>
+<head>
+<meta name = 'viewport' content = 'width = device-width,initial-scale = 1.0 '>
+<meta name = 'author' content = 'Timileyin Pelumi'>
+<meta name = 'organization' content = 'Nebula NG'>
+
+<title> Fx Wallet </title>
+
+
+<link rel = 'stylesheet' href = '/static/main/css/bootstrap.min.css' />
+
+<link rel = 'stylesheet' href = '/static/main/css/fonts.css' />
+
+
+
+<style>
+
+
+
+*{
+padding :0;
+border :none;
+margin :0;
+box-sizing: border-box;
+
+}
+
+
+body{
+
+
+background-color: #F0F0F0;
+}
+
+nav{
+display:block;
+position:sticky;
+top:0;
+right:0;
+
+}
+
+
+.sticky-top-bar{
+background-color: white;
+display:block;
+box-shadow:5px 5px 20px rgba(0,0,0,0.4);
+}
+
+
+.sticky-top-bar > p{
+text-align: left;
+display:inline-block;
+color:white;
+font-size: 1.2rem;
+font-weight: bold;
+font-family:quicksandbold;
+padding : 1rem;
+text-transform: capitalize;
+text-shadow: .8px .8px .5px #4080C8;
+background-color:#4080C8;
+}
+
+
+
+.sticky-top-bar > .menu-bar {
+text-align: right;
+display:inline-block;
+color: #4080C8;
+font-size: 2.75rem;
+font-weight: bold;
+float:right;
+margin : .5rem 1.5rem .5rem .5rem;
+padding-bottom: .1rem;
+
+}
+
+main > .welcome > .pitch{
+
+
+position:absolute;
+top:6rem;
+}
+
+
+
+main > .welcome > .pitch > button{
+
+height:3rem;
+width:70%;
+}
+
+main > .welcome > .pitch > p{
+
+
+margin:auto;
+margin-top:5rem;
+text-align: center;
+display:inline-block;
+color: white;
+font-size: 3rem;
+font-weight: 900;
+font-family: comfortaa;
+
+}
+
+.welcome  img{
+
+height:25rem;
+width:100%;
+margin:auto;
+display:block;
+position:relative;
+}
+
+
+.coins{
+
+margin-top:4.4rem;
+}
+
+.coins > .curr{
+
+font-size: 2rem;
+color:#4080C8;
+font-family: robotobold;
+
+}
+
+.trust p{
+
+font-family: quicksandbold;
+font-size:1.4rem;
+color: midnightblue;
+}
+
+.trust .create{
+margin-top:6rem;
+width:75%;
+height:4rem;
+font-size:1.3rem;
+
+}
+
+.assure{
+
+margin-top:5rem;
+margin-bottom:5rem;
+}
+
+.assure svg{
+font-size:3.7rem;
+
+display:inline-block;
+}
+.assure p{
+
+margin-left:1rem;
+display:inline-block;
+font-family: quicksandbold;
+font-size:1.4rem;
+color:#424242;
+}
+
+.footer{
+background-color:rgba(0,0,0,0.75);
+min-height:5rem;
+width:100%;
+margin:0;
+margin-top:4rem;
+}
+
+.footer span{
+
+margin-left:1rem;
+display:inline-block;
+font-family: quicksandbold;
+font-size:1.4rem;
+color:#424242;
+
+}
+
+
+
+
+label{
+font-size:1.45rem;
+text-align:center;
+font-family: comfortaa;
+text-transform:capitalize;
+padding:1rem 1rem 1rem .5rem;
+}
+
+
+.create-wallet{
+font-family: roboto1;
+}
+
+
+.info{
+display:inline-block;
+margin-left:1rem;
+padding:1rem;
+color:red;
+}
+
+.msg{
+font-size:1rem;
+color:red;
+text-align:left;
+padding:.5rem;
+margin-left:.5rem;
+
+}
+
+a,#link{ 
+text-decoration: none;
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class = 'container-fluid-sm'>
+
+
+
+<nav class = 'row' >
+
+<div class = 'd-block d-md-none col sticky-top-bar'>
+
+<p> fx wallet </p>
+
+<div class = 'menu-bar' >
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>
+</div>
+
+</div>
+
+
+</nav>
+
+
+
+
+
+<main>
+
+
+
+
+<div class = 'container login-form mt-4 px-4'>
+
+
+<h3 class = 'create-wallet my-4 text-primary px-2 '> Login to your wallet </h3>
+
+
+
+
+
+<form method = 'post' action = '/users/login/' >
+
+<input type="hidden" name="csrfmiddlewaretoken" value="Ykt0VIBJI04vXfHAzOPnI53ZobgvVvoFvMNJ3fBEG1GRyRfMgtBdd2wqF9Rj08vt">
+
+
+<div class = 'form-group' >
+<label for = 'email' > email </label>
+<input id = 'email' class  = 'form-control form-control-lg' required type = 'email' name = email />
+<small class = 'info' >  </small>
+</div>
+
+<div class = 'form-group' >
+<label for = 'pswd' > password </label>
+<input  id = 'pswd' class  = 'form-control form-control-lg' required minlength = 8  type = 'password' name = password />
+<small class = 'info' >  </small>
+</div>
+
+
+<input class = 'd-block mx-auto mt-4 py-3 btn w-75 btn-primary 'type = 'submit' />
+</form>
+
+
+
+
+</div>
+
+
+
+
+<div class = 'my-4 px-4 py-4 mx-auto trust'>
+<blockquote>
+
+<p>
+
+
+
+Log in to access your wallet and do all you wish
+
+
+
+</p>
+
+</blockquote>
+
+
+
+<a id = 'link' href = '/users/new/'> <button class = 'create  btn btn-secondary mx-auto d-block ' > or Create a new wallet </button> </a>
+
+
+
+
+</div>
+
+
+
+
+<div class = 'assure mx-auto '>
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7 6a1 1 0 0 1 2 0v1H7V6zm3 0v1.076c.54.166 1 .597 1 1.224v2.4c0 .816-.781 1.3-1.5 1.3h-3c-.719 0-1.5-.484-1.5-1.3V8.3c0-.627.46-1.058 1-1.224V6a2 2 0 1 1 4 0zM6 8.3c0-.042.02-.107.105-.175A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3z"/>
+</svg>
+
+<p> With us, your wallet is secure!</p>
+
+
+
+
+</div>
+
+</main>
+
+
+</div>
+</body>
+</html>

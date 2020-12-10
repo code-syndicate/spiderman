@@ -1,0 +1,113 @@
+﻿{% extends 'main/base.html' %}
+
+
+{% block styles %}
+{{ block.super }}
+
+label{
+font-size:1.45rem;
+text-align:center;
+font-family: comfortaa;
+text-transform:capitalize;
+padding:1rem 1rem 1rem .5rem;
+}
+
+
+.create-wallet{
+font-family: roboto1;
+}
+
+
+.info{
+display:inline-block;
+margin-left:1rem;
+padding:1rem;
+color:red;
+}
+
+.msg{
+font-size:1rem;
+color:red;
+text-align:left;
+padding:.5rem;
+margin-left:.5rem;
+
+}
+
+a,#link{ 
+text-decoration: none;
+}
+
+{% endblock %}
+
+
+
+{% block elink %}
+
+<a id = 'link' href = '{% url "users:create_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > or Create a new wallet </button> </a>
+
+{% endblock elink %}
+
+
+
+{% block peptalk %}
+
+Log in to access your wallet and do all you wish
+
+{% endblock %}
+
+
+{% block pitch %}
+
+
+<div class = 'container login-form mt-4 px-4'>
+
+
+<h3 class = 'create-wallet my-4 text-primary px-2 '> Login to your wallet </h3>
+
+{% if msg %}
+
+<div class = 'msg' >
+
+{{ msg }}
+
+</div>
+
+{% endif %}
+
+
+
+<form method = 'post' action = '{% url "users:login_view" %}' >
+
+{% csrf_token %}
+
+
+<div class = 'form-group' >
+<label for = 'email' > {{ form.email.name }} </label>
+<input id = 'email' class  = 'form-control form-control-lg' required type = 'email' name = {{ form.email.name }} />
+<small class = 'info' > {{ form.email.errors }} </small>
+</div>
+
+<div class = 'form-group' >
+<label for = 'pswd' > {{ form.password.name }} </label>
+<input  id = 'pswd' class  = 'form-control form-control-lg' required minlength = 8  type = 'password' name = {{ form.password.name }} />
+<small class = 'info' > {{ form.password.errors }} </small>
+</div>
+
+
+<input type = 'hidden' name = 'redirect_url' value = {{ request.GET.redirect_to }} />
+
+<input class = 'd-block mx-auto mt-4 py-3 btn w-75 btn-primary 'type = 'submit' />
+</form>
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+

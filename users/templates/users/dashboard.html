@@ -1,0 +1,166 @@
+﻿{% extends 'users/summary.html' %}
+
+
+
+
+{% block styles %}
+
+
+a,#link{ 
+text-decoration: none;
+}
+
+
+.head-txt{
+
+color: #4888D8;
+font-size:1.5rem;
+font-family:leaguespartan;
+background-color:inherit;
+margin:auto;
+min-height:4rem;
+width:80%;
+border:.1px solid transparent;
+border-radius:1rem;
+text-align:center;
+padding:.5rem;
+vertical-align:middle;
+margin-top:2rem;
+text-transform:uppercase;
+}
+
+.actions{
+
+display:flex;
+flex-flow:row wrap;
+justify-content : space-between;
+align-items :center;
+align-content : center;
+}
+
+
+.action{
+min-height:8rem;
+height:8rem;
+width:43.333%;
+padding:.5rem;
+
+background-color:#4888D8;
+text-align:center;
+margin:.5rem;
+font-size:1rem;
+font-family:quicksand;
+color : white;
+padding-top:10%;
+border:.2rem solid transparent;
+border-radius:.75rem;
+
+text-transform:uppercase;
+box-shadow:.5rem .5rem 1rem rgba(0,0,0,0.4);
+}
+
+
+.action-extra{
+width:100%;
+min-height:6rem;
+height:6rem;
+font-family:comfortaa;
+font-size:1rem;
+color:white;
+}
+
+
+.action:hover{
+box-shadow:1rem 1rem 2rem rgba(0,0,0,0.4);
+}
+
+{{block.super}}
+
+
+{% endblock styles %}
+
+
+
+
+
+
+{% block elink %}
+
+<a id = 'link' href = '{% url "users:summary_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > See Account Summary</button> </a>
+
+{% endblock elink %}
+
+
+
+{% block peptalk %}
+
+Manage your wallet here, to view your account details, click the button below
+
+{% endblock %}
+
+
+{% block pitch %}
+
+<div class = 'actions my-4  container mx-auto'>
+
+<h2 class = 'head-txt'> Dashboard </h2>
+
+<div class ='action my-auto action-extra'>  {{ request.user.wallet_address }} </div>
+
+
+<div class = 'action '>
+ Deposit
+ <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg>
+</div>
+
+<div class = 'action'>
+ Withdraw
+ 
+ <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+</svg>
+
+</div>
+
+
+<div class = 'action'>
+ Logs
+ 
+ <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ul" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg>
+</div>
+
+<div class = 'action'>
+ Balance
+ 
+ <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wallet" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"/>
+</svg>
+
+</div>
+
+<div class = 'action'>
+ Convert
+ 
+ <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+</svg>
+</div>
+
+
+<a id = 'link' href = '{% url "users:logout_view" %}' class = 'action'>
+ Log out
+ 
+ <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm1.146-7.85a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+</svg>
+ </a>
+
+</div>
+{% endblock %}
