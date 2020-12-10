@@ -15,7 +15,7 @@ class Wallet( models.Model ):
 	
 	date_created  = models.DateTimeField( auto_now_add = True  , editable = False)
 	
-	balance = models.CharField( max_length = 15, default = 0 ,  editable = False )
+	balance = models.CharField( max_length = 25, default = 0 ,  editable = False )
 	
 	
 	CRYPTOS = (
@@ -26,7 +26,7 @@ class Wallet( models.Model ):
 	
 				)
 				
-	currency_type = models.CharField( max_length = 15, default = 'Bitcoin' , choices = CRYPTOS )
+	currency_type = models.CharField( max_length = 25, default = 'Bitcoin' , choices = CRYPTOS )
 	
 	
 	def add(self, amt ):
