@@ -1,0 +1,10 @@
+﻿# Text backup files
+*.bak
+
+# Database
+*.sqlite3
+/pycache
+/py_cache
+__pycache__
+/__pycache__
+*__pycache__
