@@ -14,7 +14,7 @@ def logout_view( request ):
 	
 	request.session.flush()
 	
-	return HttpResponse( status = 200 , content = "Logged Put" )
+	return redirect('/')
 
 
 #New User View	

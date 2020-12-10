@@ -58,8 +58,8 @@ background-color:#58A0E8;
 padding:1.5rem;
 border:.1rem solid #4888D8;
 border-radius:.25rem;
-font-family:leaguespartan;
-font-size:1.2rem;
+font-family: quicksandbold;
+font-size:1.1rem;
 color: #F0F0F0;
 text-align:center;
 margin:0;
@@ -98,7 +98,7 @@ color:#4888D8;
 
 <p > Account name : <span> {{ request.user.get_fullname }} </span>  </p>
 
-<p> Wallet Balance : <span> {{ request.user.wallet.balance }}  {{ request.user.wallet.currency_type | lower  }} </span>  </p>
+<p> Wallet Balance : <span> {{ request.user.wallet.balance }}  {{ request.user.wallet.sym | upper  }} </span>  </p>
 
 
 

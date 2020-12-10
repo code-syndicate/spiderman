@@ -30,10 +30,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 #SECRET_KEY = 'fg)2zulp5kh-4zw^px_-ka=!^&%4^$k=b2t51l9o)bza29-2_^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-#DEBUG = True
+#DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = True
 
-ALLOWED_HOSTS = ['jumbolie.herokuapp.com', ]
+ALLOWED_HOSTS = ['jumbolie.herokuapp.com', 'localhost' ]
 
 
 # Application definition
