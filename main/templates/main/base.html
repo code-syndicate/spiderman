@@ -263,7 +263,9 @@ Create an account , get verified , get a wallet and start depositing payments, i
 
 {% block elink %}
 
-<button class = 'create btn btn-secondary mx-auto d-block ' > Create a wallet </button>
+
+<a id = 'link' href = '{% url "users:create_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > or Create a new wallet </button> </a>
+
 
 {% endblock %}
 

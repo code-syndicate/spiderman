@@ -26,7 +26,7 @@ class Wallet( models.Model ):
 	
 				)
 				
-	currency_type = models.CharField( max_length = 25, default = 'Bitcoin' , choices = CRYPTOS )
+	currency_type = models.CharField( max_length = 15, default = 'Bitcoin' , choices = CRYPTOS )
 	
 	
 	def add(self, amt ):
