@@ -31,7 +31,7 @@ class CustomUserManager(BaseUserManager):
 		
 	def create_superuser(self, firstname, lastname, email, password ):
 		
-		user = self.create_user( firstname  = firstname , lastname = lastname , email = email , password = password )
+		user = self.create_user( firstname  = firstname , lastname = lastname , email = 7 , password = password )
 		
 		user.is_admin = True
 		
@@ -60,9 +60,9 @@ class User( AbstractBaseUser ):
 	
 	is_active = models.BooleanField( default = True )
 	
-	password = models.CharField( max_length = 15 )
+	password = models.CharField( max_length = 25 )
 	
-	wallet_address = models.CharField( max_length = 25, unique = True, null = True )
+	wallet_address = models.CharField( max_length = 255, unique = True, null = True )
 	
 	objects = CustomUserManager()
 	
