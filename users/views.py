@@ -53,13 +53,13 @@ class CreateView( View ):
 			
 			pre_saved_user.save()
 			
-			"""new_wallet = Wallet.objects.create( user = pre_saved_user )
+			new_wallet = Wallet.objects.create( user = pre_saved_user )
 			
 			new_wallet.save()
 			
 			pre_saved_user.wallet_address = new_wallet.wallet_address
 			
-			pre_saved_user.save()"""
+			pre_saved_user.save()
 			
 			request.session.flush()
 		
