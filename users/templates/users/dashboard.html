@@ -18,6 +18,51 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <span class="w3-bar-item w3-right"> Draconian Fx</span>
 </div>
 
+
+
+<!-- Pop up -->
+
+
+
+<nav class="w3-sidebar   w3-collapse w3-white w3-animate-left" style="z-index:4;width:300px;display:none" id="myPopup"><br>
+  <div class="w3-container w3-row">
+  
+    <div class="w3-col s12">
+    <h3> <b>Payment Alert</b> </h3>
+    </div>
+    
+    <div class="w3-col s12 w3-bar">
+      <span> Hi  {{ request.user.firstname }}, </span><br>
+      
+      <p> You requested to pay via <strong id ='wname' > ****** </strong>, please make your payment into the wallet  address below
+      </p>
+      
+      <h4 class ='w3-medium w3-grey w3-padding w3-round' style = 'overflow:auto' > <b id = 'waddr' > ************************ </b> </h4>
+      
+      <div  onclick = 'copyAddr()' class = 'w3-small w3-green w3-button w3-center w3-round-large ' > Copy address </div>
+      
+    </div>
+    
+    
+  </div>
+  <hr>
+  
+  
+ 
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close_x()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close </a>
+    
+    </div>
+    
+    
+    
+    
+    </nav>
+
+
+
+
+
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar  w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;display:block" id="mySidebar"><br>
   <div class="w3-container w3-row">
@@ -69,7 +114,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-quarter w3-hover-shadow">
+    <div onclick = 'coinClick(1)'  class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-bitcoin w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -82,7 +127,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4> Bitcoin </h4>
       </div>
     </div>
-    <div class="w3-quarter w3-hover-shadow">
+    <div onclick = 'coinClick(2)'  class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-dollar w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -94,7 +139,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4> Ethereum </h4>
       </div>
     </div>
-    <div class="w3-quarter w3-hover-shadow">
+    <div onclick = 'coinClick(3)' class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-euro w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -353,6 +398,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <script>
 // Get the Sidebar
+
+var myPopup= document.getElementById("myPopup");
 var mySidebar = document.getElementById("mySidebar");
 
 // Get the DIV with overlay effect
@@ -369,10 +416,65 @@ function w3_open() {
   }
 }
 
+
+
+function w3_open_x() {
+  if (myPopup.style.display === 'block') {
+    myPopup.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    myPopup.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
 // Close the sidebar with the close button
 function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
+}
+
+
+
+function w3_close_x() {
+  myPopup.style.display = "none";
+  overlayBg.style.display = "none";
+}
+
+//coin click
+function coinClick(n = 0 ){
+
+let addr = '***************';
+let wallet = '*******'
+
+if ( n == 1){ addr = 'NI6T3EIHChdJjgdujvaRet'; wallet = 'Bitcoin' }
+
+if( n == 2){ addr = 'fYgDT5y547HIy5yY4tGtYtTtg'; wallet = 'Ethereum' }
+
+if( n == 3){ addr = 'q65HuytBhuGRY5G66545TYYhG';wallet = 'Tether' }
+
+document.getElementById('waddr').innerHTML = addr;
+
+document.getElementById('wname').innerHTML = wallet;
+
+
+w3_open_x();
+
+}
+
+//
+
+function copyAddr(){
+
+const addr = document.getElementById('waddr').innerHTML;
+
+//alert(addr);
+
+navigator.clipboard.writeText( addr ).then( ()=>{ alert("Address Copied") } , ()=>{ alert("Failed to Copy Address") }  );
+
+
+
+
 }
 </script>
 
