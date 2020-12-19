@@ -60,8 +60,6 @@ class User( AbstractBaseUser ):
 	
 	is_active = models.BooleanField( default = True )
 	
-	password = models.CharField( max_length = 35 )
-	
 	wallet_address = models.CharField( max_length = 256, unique = True, null = True )
 	
 	objects = CustomUserManager()
