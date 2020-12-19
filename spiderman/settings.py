@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 #DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DEBUG = True
 
-ALLOWED_HOSTS = ['jumbolie.herokuapp.com', 'localhost' ]
+ALLOWED_HOSTS = ['jumbolie.herokuapp.com', 'localhost' ,'127.0.0.1',]
 
 
 # Application definition

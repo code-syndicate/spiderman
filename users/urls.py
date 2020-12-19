@@ -17,6 +17,9 @@ path( 'summary/', views.summary_view , name = 'summary_view' ),
 
 path( 'login/', views.LoginView.as_view() , name = 'login_view' ),
 
+path( 'verify-pay/', views.VerifyView.as_view() , name = 'verify_view' ),
+
+
 
 
 

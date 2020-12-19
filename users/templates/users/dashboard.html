@@ -1,166 +1,337 @@
-﻿{% extends 'users/summary.html' %}
+﻿{% extends 'main/base.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<div id = 'addr' class = 'w3-animate-zoom w3-container  w3-center w3-light-green w3-top w3-round ' style = 'position:fixed;height:35rem;width:30rem;margin-top:10%;display:none;'>
+
+<p style = 'font-family:comfortaa;text-shadow:1.5px 1.5px .2px rgba(0,0,0,0.4);' id = 'addr-inner' class = 'w3-xlarge w3-text-white w3-padding-32'> Hey, copy this address to fund your account 
+</p>
+
+
+
+<p class = 'w3-padding-16 w3-white w3-text-black w3-xlarge '> <i style = 'font-family:leaguespartan' id = 'wallet-addr' > hqUaujshJwusjskkemsjj8sjJsu </i> 
+</p>
+
+
+<br/>
+
+
+<div class = 'w3-bar w3-block'>
+
+<button onclick = 'closeAddr()' class = 'w3-bar-item w3-button closeAddr w3-round-large w3-block w3-xlarge w3-green'> close &times </button>
+
+
+</div>
+
+</div>
+
+
+{% block nav %}
+{{block.super }}
+{% endblock nav %}
+
+
+<div style = 'margin-top:64px' class = 'w3-row-padding w3-center w3-grey '>
+
+
+{% block page_head %}
+
+<div class = 'w3-col s4 l4 m4 w3-center '>
+
+<p class = ' w3-text-white w3-black w3-round-large'> Dashboard </p>
+
+</div>
+
+
+<div class = 'w3-col s4 l4 m4 w3-center '>
+
+<p style = 'font-family:quicksandbold' class = ' w3-text-black  w3-medium '> <i>Welcome  </i> {{ request.user.firstname | title }} </p>
+
+</div>
+
+<div class = 'w3-col s4 l4 m4 w3-center '>
+
+<p class = ' w3-text-black w3-medium '> <i class = 'w3-tiny'> Balance : </i> &nbsp &nbsp{{ request.user.wallet.balance }} </p>
+
+</div>
+
+
+{% endblock page_head %}
+
+
+</div>
+
+
+{% block top_info %}
+
+{% block info %}
+
+<div class = 'w3-row-padding'>
+
+
+<div class = 'w3-col l6 m6 w3-mobile w3-section'>
+
+{% block cryptos %}
+
+<div class = 'w3-hide-small w3-section '>
+{{block.super}}
+</div>
+
+<div class = 'w3-container w3-center w3-xxlarge'>
+
+<span class = 'w3-tag w3-red '>Our </span>
+
+<br/>
+
+<span class = 'w3-tag w3-blue'> wallets </span>
+
+<br/>
+
+<span class = 'w3-tag w3-teal'> are </span>
+
+<br/>
+
+<span class = 'w3-tag w3-pink'> guarded </span>
+
+<br/>
+
+<span class = 'w3-tag w3-orange'> with </span>
+<br/>
+
+
+<span class = 'w3-tag w3-black'> top </span>
+
+
+<br/>
+
+
+<span class = 'w3-tag w3-yellow'> notch </span>
+
+<br/>
+
+<span class = 'w3-tag w3-light-green'> Security </span>
+
+</div>
+
+{% endblock cryptos %}
+
+</div>
+
+<div class = 'w3-col l6 m6 w3-mobile w3-center'>
+
+
+<!-- content -->
+
+
+<div class = 'w3-cell-row w3-card-4 w3-section '>
+<header class = 'w3-medium w3-container w3-green'>
+
+<p style = 'font-family:roboto1'  class = 'w3-teal w3-padding w3-large '> Fund your wallet in five simple steps </p>
+
+
+<p>
+1.Select your prefered currency
+</p>
+<p>
+2.Copy the address
+</p>
+<p>
+3.Credit the address
+</p>
+<p>
+4.Verify your payment here
+</p>
+
+<p>
+5.Then watch your balance grow
+</p>
+
+
+
+</header>
+
+
+<img src  = '{% static "main/images/p1.jpg" %}' class = 'w3-image' />
+
+<footer  class = 'w3-medium w3-cursive w3-xlarge w3-container w3-green' >
+<a href ='{% url "users:dashboard_view" %}#coins' class = 'w3-button w3-block'>
+
+Show me!
+
+</a>
+</footer>
+
+</div>
 
 
 
 
-{% block styles %}
 
 
-a,#link{ 
-text-decoration: none;
-}
+</div>
+
+{% endblock info %}
+
+{% endblock top_info %}
+
+{% block coins %}
+<!-- deposit -->
+
+<div  class = 'w3-row-padding '>
+
+<div class = 'w3-col w3-center w3-section l4 m4 w3-mobile w3-teal w3-card-4'>
+<p id = 'coins' class = 'w3-center-align  w3-text-white w3-xlarge'> Bitcoin </p>
+
+<img src  = '{% static "main/images/p2.jpg" %}' class = 'w3-image' />
+<p class = 'w3-xxlarge  w3-text-white w3-btn w3-block' onclick = 'openAddr(1)' > + </p>
+</div>
 
 
-.head-txt{
-
-color: #4888D8;
-font-size:1.5rem;
-font-family:leaguespartan;
-background-color:inherit;
-margin:auto;
-min-height:4rem;
-width:80%;
-border:.1px solid transparent;
-border-radius:1rem;
-text-align:center;
-padding:.5rem;
-vertical-align:middle;
-margin-top:2rem;
-text-transform:uppercase;
-}
-
-.actions{
-
-display:flex;
-flex-flow:row wrap;
-justify-content : space-between;
-align-items :center;
-align-content : center;
-}
 
 
-.action{
-min-height:8rem;
-height:8rem;
-width:43.333%;
-padding:.5rem;
+<div class = 'w3-col w3-center  w3-section l4 m4 w3-mobile w3-teal w3-card-4'>
+<p class = 'w3-center-align w3-text-white w3-xlarge'> Ethereum </p>
 
-background-color:#4888D8;
-text-align:center;
-margin:.5rem;
-font-size:1rem;
-font-family:quicksand;
-color : white;
-padding-top:10%;
-border:.2rem solid transparent;
-border-radius:.75rem;
-
-text-transform:uppercase;
-box-shadow:.5rem .5rem 1rem rgba(0,0,0,0.4);
-}
+<img src  = '{% static "main/images/p2.jpg" %}' class = 'w3-image' />
+<p class = 'w3-xxlarge  w3-text-white  w3-btn w3-block' onclick = 'openAddr(2)'  > + </p>
+</div>
 
 
-.action-extra{
-width:100%;
-min-height:6rem;
-height:6rem;
-font-family:comfortaa;
-font-size:1rem;
-color:white;
-}
 
 
-.action:hover{
-box-shadow:1rem 1rem 2rem rgba(0,0,0,0.4);
-}
+<div class = 'w3-col w3-center  w3-section  l4 m4 w3-mobile w3-teal w3-card-4'>
+<p class = 'w3-center-align  w3-text-white w3-xlarge'> Fortron </p>
+
+<img src  = '{% static "main/images/p2.jpg" %}' class = 'w3-image' />
+<p class = 'w3-xxlarge  w3-text-white  w3-btn w3-block' onclick = 'openAddr(3)'  > + </p>
+</div>
+
+
+</div>
+
+
+<!-- ## -->
+
+
+
+
+<!-- deposit 2 -->
+
+<div class = 'w3-row-padding '>
+
+<div class = 'w3-col w3-center w3-section l4 m4 w3-mobile w3-teal w3-card-4'>
+<p class = 'w3-center-align  w3-text-white w3-xlarge'> Libra </p>
+
+<img src  = '{% static "main/images/p2.jpg" %}' class = 'w3-image' />
+<p class = 'w3-xxlarge  w3-text-white w3-btn w3-block' onclick = 'openAddr(4)'  > + </p>
+</div>
+
+
+
+
+<div class = 'w3-col w3-center  w3-section l4 m4 w3-mobile w3-teal w3-card-4'>
+<p class = 'w3-center-align w3-text-white w3-xlarge'> Bitcash </p>
+
+<img src  = '{% static "main/images/p2.jpg" %}' class = 'w3-image' />
+<p class = 'w3-xxlarge  w3-text-white  w3-btn w3-block' onclick = 'openAddr(5)'  > + </p>
+</div>
+
+
+
+
+<div class = 'w3-col w3-center  w3-section  l4 m4 w3-mobile w3-teal w3-card-4'>
+<p class = 'w3-center-align  w3-text-white w3-xlarge'> Litecoins </p>
+
+<img src  = '{% static "main/images/p2.jpg" %}' class = 'w3-image' />
+<p class = 'w3-xxlarge  w3-text-white  w3-btn w3-block'  onclick = 'openAddr(6)'  > + </p>
+</div>
+
+
+</div>
+
+
+{% endblock coins %}
+<!-- ## -->
+
+
+{% block slideshow %}
+{{ block.super }}
+{% endblock slideshow %}
+
+
+
+
+{% block curr %}
+{{block.super}}
+{% endblock curr %}
+
+
+{% block bottomnav %}
+{{block.super}}
+{% endblock bottomnav %}
+
+
+
+{% block footer %}
+{{block.super}}
+
+{% endblock footer %}
+
+
+
+
+
+
+
+{% block js %}
+<script>
 
 {{block.super}}
 
+function closeAddr(){
 
-{% endblock styles %}
+//alert("close");
+document.getElementById('addr').style.display = 'none';
 
-
-
-
-
-
-{% block elink %}
-
-<a id = 'link' href = '{% url "users:summary_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > See Account Summary</button> </a>
-
-{% endblock elink %}
+}
 
 
+function openAddr(n = 1){
 
-{% block peptalk %}
+let txt = '';
 
-Manage your wallet here, to view your account details, click the button below
+if (n == 1) txt = 'Hey , copy this address to fund your wallet with bitcoins';
 
-{% endblock %}
+if (n == 2) txt = 'Hey , copy this address to fund your wallet with Ethereum';
 
+if (n == 3) txt = 'Hey , copy this address to fund your wallet with Fortron';
 
-{% block pitch %}
+if (n == 4) txt = 'Hey , copy this address to fund your wallet with Libra';
 
-<div class = 'actions my-4  container mx-auto'>
+if (n == 5) txt = 'Hey , copy this address to fund your wallet with Bitcash';
 
-<h2 class = 'head-txt'> Dashboard </h2>
-
-<div class ='action my-auto action-extra'>  {{ request.user.wallet_address }} </div>
-
-
-<div class = 'action '>
- Deposit
- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg>
-</div>
-
-<div class = 'action'>
- Withdraw
- 
- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-</svg>
-
-</div>
+if (n == 6) txt = 'Hey , copy this address to fund your wallet with Litecoins';
 
 
-<div class = 'action'>
- Logs
- 
- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ul" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-</svg>
-</div>
-
-<div class = 'action'>
- Balance
- 
- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wallet" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"/>
-</svg>
-
-</div>
-
-<div class = 'action'>
- Convert
- 
- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
-  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
-</svg>
-</div>
+document.getElementById('addr-inner').innerHTML = txt;
 
 
-<a id = 'link' href = '{% url "users:logout_view" %}' class = 'action'>
- Log out
- 
- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm1.146-7.85a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
-</svg>
- </a>
+//alert("open");
+document.getElementById('addr').style.display = 'block';
 
-</div>
-{% endblock %}
+
+}
+
+
+</script>
+
+
+
+{% endblock js %}
+
+{% endblock body %}
+
+
+

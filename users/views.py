@@ -66,7 +66,7 @@ class CreateView( View ):
 			return  redirect('/users/login/')
 
 	
-	
+
 #Login View
 class LoginView( View ):
 	def get( self, request ):
@@ -115,7 +115,20 @@ class LoginView( View ):
 					
 					return redirect( request.GET.get('redirect_url') )
 					
-					
+
+#Login View
+class VerifyView( View ):
+	def get( self, request ):
+		
+		
+		return  render( request , 'users/verify.html' )
+		
+		
+	def post( self, request ):
+		
+		
+			return render( request , 'users/verify.html' )
+						
 				
 				
 				

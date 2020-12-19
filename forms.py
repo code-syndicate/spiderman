@@ -5,7 +5,7 @@ class CreateForm( forms.ModelForm ):
 	
 	class Meta:
 		model = User
-		fields = [ 'fname' , 'lname' ,'email' ]
+		fields = [ 'firstname' , 'lastname' ,'email' ]
 		
 	password1 = forms.CharField( required = True , min_length = 8 , max_length = 25 , widget = forms.PasswordInput , label = 'Password' )
 	

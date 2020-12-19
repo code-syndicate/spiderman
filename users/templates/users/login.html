@@ -1,116 +1,67 @@
 ﻿{% extends 'main/base.html' %}
 
 
-{% block styles %}
+{% block body %}
+
+{% block nav %}
+{{block.super }}
+{% endblock nav %}
+
+<div class = 'w3-row-padding w3-center'>
+
+<div class = 'w3-col s12 l12 m12 w3-center'>
+
+<header class = 'w3-panel w3-center w3-container w3-grey w3-xxlarge'>
+
+<p class = ' w3-text-white'> Log in to access your wallet </p>
+
+</header>
+
+</div>
+</div>
 
 
-label{
-font-size:1.45rem;
-text-align:center;
-font-family: comfortaa;
-text-transform:capitalize;
-padding:1rem 1rem 1rem .5rem;
-}
+
+<div class = 'w3-row-padding'>
 
 
-.create-wallet{
-font-family: roboto1;
-}
+<div class = 'w3-col l6 m6 w3-mobile'>
 
+{% block cryptos %}
+{{block.super}}
+{% endblock cryptos %}
 
-.info{
-display:inline-block;
-margin-left:1rem;
-padding:1rem;
-color:red;
-}
+</div>
 
-.msg{
-font-size:1rem;
-color:red;
-text-align:left;
-padding:.5rem;
-margin-left:.5rem;
+<div class = 'w3-col l6 m6 w3-mobile'>
 
-}
-
-a,#link{ 
-text-decoration: none;
-}
-
+{% block login %}
 
 {{ block.super }}
-
-{% endblock %}
-
-
-
-{% block elink %}
-
-<a id = 'link' href = '{% url "users:create_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > or Create a new wallet </button> </a>
-
-{% endblock elink %}
-
-
-
-{% block peptalk %}
-
-Log in to access your wallet and do all you wish
-
-{% endblock %}
-
-
-{% block pitch %}
-
-
-<div class = 'container login-form mt-4 px-4'>
-
-
-<h3 class = 'create-wallet my-4 text-primary px-2 '> Login to your wallet </h3>
-
-{% if msg %}
-
-<div class = 'msg' >
-
-{{ msg }}
-
-</div>
-
-{% endif %}
-
-
-
-<form method = 'post' action = '{% url "users:login_view" %}' >
-
-{% csrf_token %}
-
-
-<div class = 'form-group' >
-<label for = 'email' > {{ form.email.name }} </label>
-<input id = 'email' class  = 'form-control form-control-lg' required type = 'email' name = {{ form.email.name }} />
-<small class = 'info' > {{ form.email.errors }} </small>
-</div>
-
-<div class = 'form-group' >
-<label for = 'pswd' > {{ form.password.name }} </label>
-<input  id = 'pswd' class  = 'form-control form-control-lg' required minlength = 8  type = 'password' name = {{ form.password.name }} />
-<small class = 'info' > {{ form.password.errors }} </small>
-</div>
-
-
-<input type = 'hidden' name = 'redirect_url' value = {{ request.GET.redirect_to }} />
-
-<input class = 'd-block mx-auto mt-4 py-3 btn w-75 btn-primary 'type = 'submit' />
-</form>
-
-
-
+{% endblock login %}
 
 </div>
 
 
-{% endblock %}
 
+
+{% block curr %}
+{{block.super}}
+{% endblock curr %}
+
+
+{% block bottomnav %}
+{{block.super}}
+{% endblock bottomnav %}
+
+
+
+{% block footer %}
+{{block.super}}
+
+{% endblock footer %}
+
+{% endblock body %}
 
 
 

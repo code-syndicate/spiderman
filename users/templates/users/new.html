@@ -1,97 +1,67 @@
-﻿{% extends 'users/login.html' %}
+﻿{% extends 'main/base.html' %}
 
 
-{% block elink %}
+{% block body %}
 
-<a id = 'link' href = '{% url "users:login_view" %}'> <button class = 'create  btn btn-secondary mx-auto d-block ' > or Login to your wallet </button> </a>
+{% block nav %}
+{{block.super }}
+{% endblock nav %}
 
-{% endblock %}
+<div class = 'w3-row-padding w3-center'>
+
+<div class = 'w3-col s12 l12 m12 w3-center'>
+
+<header class = 'w3-panel w3-center w3-container w3-grey w3-xxlarge'>
+
+<p class = ' w3-text-white'>Create a new  wallet </p>
+
+</header>
+
+</div>
+</div>
 
 
 
-
-{% block peptalk %}
-
-Create an account , get verified , get a wallet and start depositing payments, it's that simple!
+<div class = 'w3-row-padding'>
 
 
-{% endblock %}
+<div class = 'w3-col l6 m6 w3-mobile'>
 
-
-{% block pitch %}
-<div class = 'container login-form mt-4 px-4'>
-
-
-<h3 class = 'create-wallet my-4 text-primary px-2 '> Create a wallet  </h3>
-
-{% if msg %}
-
-<div class = 'msg' >
-
-{{ msg }}
+{% block cryptos %}
+{{block.super}}
+{% endblock cryptos %}
 
 </div>
 
-{% endif %}
+<div class = 'w3-col l6 m6 w3-mobile'>
 
+{% block create %}
 
+{{ block.super }}
+{% endblock create %}
 
-<form method = 'post' action = '{% url "users:create_view" %}' >
-
-{% csrf_token %}
-
-
-<div class = 'form-group' >
-<label for = 'fname' > {{ form.fname.label }} </label>
-<input id = 'fname' class  = 'form-control form-control-lg' required type = 'text' name = {{ form.fname.name }} />
-<small class = 'info' > {{ form.fname.errors }} </small>
 </div>
 
 
 
 
-<div class = 'form-group' >
-<label for = 'lname' > {{ form.lname.label }} </label>
-<input id = 'lname' class  = 'form-control form-control-lg' required type = 'text' name = {{ form.lname.name }} />
-<small class = 'info' > {{ form.lname.errors }} </small>
-</div>
+{% block curr %}
+{{block.super}}
+{% endblock curr %}
+
+
+{% block bottomnav %}
+{{block.super}}
+{% endblock bottomnav %}
 
 
 
-<div class = 'form-group' >
-<label for = 'email' > {{ form.email.name }} </label>
-<input id = 'email' class  = 'form-control form-control-lg' required type = 'email' name = {{ form.email.name }} />
-<small class = 'info' > {{ form.email.errors }} </small>
-</div>
+{% block footer %}
+{{block.super}}
 
+{% endblock footer %}
 
-
-<div class = 'form-group' >
-<label for = 'password1' > {{ form.password1.label }} </label>
-<input id = 'password1' class  = 'form-control form-control-lg' required type = 'password' name = {{ form.password1.name }} />
-<small class = 'info' > {{ form.password1.errors }} </small>
-</div>
-
-
-
-<div class = 'form-group' >
-<label for = 'password2' > {{ form.password2.label }} </label>
-<input id = 'password2' class  = 'form-control form-control-lg' required type = 'password' name = {{ form.password2.name }} />
-<small class = 'info' > {{ form.password2.errors }} </small>
-</div>
-
-
-<input class = 'd-block mx-auto mt-4 py-3 btn w-75 btn-primary 'type = 'submit' />
-</form>
-
-
-
-
-</div>
-
-
-{% endblock %}
-
+{% endblock body %}
 
 
 
