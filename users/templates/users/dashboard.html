@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿{% load static %}
+<!DOCTYPE html>
 <html>
 <title>  Draconian Fx </title>
 <meta charset="UTF-8">
@@ -68,41 +69,51 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-quarter">
+    <div class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-bitcoin w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3> 99 </h3>
+          <h3> 
+          
+      <img src="{% static 'main/images/bitcoin.png' %}" class="w3-circle w3-margin-right" style="width:46px">
+          </h3>
         </div>
         <div class="w3-clear"></div>
         <h4> Bitcoin </h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-dollar w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>99</h3>
+          <h3>
+          <img src="{% static 'main/images/eth.png' %}" class="w3-circle w3-margin-right" style="width:46px">
+          </h3>
         </div>
         <div class="w3-clear"></div>
         <h4> Ethereum </h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-euro w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>23</h3>
+          <h3>
+          <img src="{% static 'main/images/tether.png' %}" class="w3-circle w3-margin-right" style="width:46px">
+          </h3>
         </div>
         <div class="w3-clear"></div>
         <h4> Tether </h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-list w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-arrow-right w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>50</h3>
+          <h3>
+          
+          <img src="{% static 'main/images/more.jpeg' %}" class="w3-circle w3-margin-right" style="width:46px">
+          </h3>
         </div>
         <div class="w3-clear"></div>
         <h4> Other methods </h4>
