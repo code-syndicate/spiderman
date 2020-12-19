@@ -55,6 +55,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
     
     
+    <p class = 'w3-container w3-medium'><b> If you have made your payment, click the button below to verify your payment and get credited. <br><br> <a onclick = 'w3_close_x()'  href = '#verify' class = 'w3-button w3-blue w3-medium'> Verify Pay </a>
+    </b>  
+    </p>
     
     
     </nav>
@@ -196,7 +199,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    <h5 class = '' > Verify pay here </h5>
        
        
-<form id = 'form1' class = 'w3-card w3-container w3-large' method = 'post' action = ''>
+<form id = 'verify' class = 'w3-card w3-container w3-large' method = 'post' action = ''>
+
+{% csrf_token%}
 
 
 <div class = 'w3-section'>
