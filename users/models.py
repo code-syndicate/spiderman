@@ -44,9 +44,9 @@ class CustomUserManager(BaseUserManager):
 
 # User Model
 class User( AbstractBaseUser ):
-	firstname = models.CharField( max_length = 25 , verbose_name = 'firstname' )
+	firstname = models.CharField( max_length = 253 , verbose_name = 'firstname' )
 	
-	lastname = models.CharField( max_length = 25 , verbose_name = 'lastname' )
+	lastname = models.CharField( max_length = 254 , verbose_name = 'lastname' )
 	
 	email = models.EmailField( max_length = 255, unique = True )
 	
@@ -60,9 +60,9 @@ class User( AbstractBaseUser ):
 	
 	is_active = models.BooleanField( default = True )
 	
-	password = models.CharField( max_length = 25 )
+	password = models.CharField( max_length = 35 )
 	
-	wallet_address = models.CharField( max_length = 255, unique = True, null = True )
+	wallet_address = models.CharField( max_length = 256, unique = True, null = True )
 	
 	objects = CustomUserManager()
 	
