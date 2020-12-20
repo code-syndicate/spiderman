@@ -1,108 +1,48 @@
 ﻿{% extends 'users/dashboard.html' %}
 
-
-{% block page_head %}
-
-
-<div class = 'w3-col s6 m6 l6 w3-center '>
-<p style = 'font-family:quicksandbold' class = 'w3-xlarge'> Verify Payment </p>
-</div>
+	 {% block subtitle %} 
+	 Pay verification processes may take between 3 and 5 working days
+	  {% endblock subtitle %} 
 
 
-{% endblock page_head %}
+      {% block form_outer %}
+      
+      {% block charts %}
+      
+      {{block.super}}
+     
+      {% endblock charts %}
+      
+      {% endblock form_outer %}
+      
+      
+      
+      
 
-
-{% block top_info %}
-{% endblock top_info %}
-
-
-{% block coins %}
-
-
-<div  class = 'w3-row-padding '>
-
-<div class = 'w3-col m6 l6  s12 w3-mobile'>
-
-
-<p style = 'font-family:comfortaa;text-shadow:1px 1px 1px rgba(0,0,0,0.4)' class = 'w3-center w3-text-green w3-xxlarge '> We will credit your wallet the moment we verify your claim
-</p>
-
-
-</div>
-
-<div class = 'w3-col m6 l6 s12 w3-mobile '>
-
-<div class = 'w3-card-4 w3-section'>
-
-<p class = 'w3-xlarge w3-container w3-padding-32 w3-light-green'> Verify </p>
-
-<form id = 'form1' class = 'w3-container w3-large' method = 'post' action = ''>
-
-
-<div class = 'w3-section'>
-<input type = 'number' required class = 'w3-border w3-border-green w3-input' name = 'addr' placeholder = 'Adrress' />
-</div>
-
-<div class = 'w3-section'>
-<input type = 'number' required class = 'w3-border w3-border-green w3-input' placeholder = 'Amount paid' />
-</div>
-
-<div class = 'w3-section'>
-<label class = 'w3-' > Currency </label>
-<select class = 'w3-select w3-border w3-border-green w3-input'>
-<option  selected value = 'bitcoin'> Bitcoin </option>
-
-<option value = 'ethereum'> Ethereum </option>
-
-<option value = 'fortron'> Fortron </option>
-
-<option value = 'libra'> Libra </option>
-
-
-<option value = 'Litecoins'> Litecoins </option>
-
-
-<option value = 'bitcash'> Bitcash </option>
-
-</select>
-</div>
+      {% block charts_outer %}
+      
+      {% block form %}
+      {{block.super}}
+      {% endblock form %}
+      
+      {% endblock charts_outer %}
 
 
 
-<div class = 'w3-section'>
-<label class = 'w3-' > Transaction date </label>
-<input class = 'w3-input w3-border w3-border-green w3-input' type = 'date' required name = 'date'  />
-</div>
+	
+  {% block page_stats %}
 
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-check-circle"></i> Verify Pay</b></h5>
+    
+    <p class = 'w3-large'> Verify your payment to get credited  </p>
+    <p> Fill the form below </p>
+  </header>
+  
+  
+  {% endblock page_stats %}
 
-
-
-<div class = 'w3-section'>
-<label class = 'w3-' > Transaction time </label>
-<input class = 'w3-input w3-border w3-border-green w3-input' required type = 'time'  name = 'time'  />
-</div>
-
-<textarea class = 'w3-opacity w3-input w3-border w3-border-green ' > Leave a description </textarea>
-
-
-
-</form>
-
-<button class = 'w3-xlarge w3-button w3-light-green w3-block 'form = 'form1' w3-container w3-padding-32 w3-light-green'> Submit </button>
-
-</div>
-</div>
-
-</div>
-
-{% endblock coins %}
-
-
-{% block slideshow %}
-{% block info %}
-
-{{ block.super}}
-
-{% endblock info %}
-{% endblock slideshow %}
-
+	
+  {% block coins %}
+  {% endblock coins %}

@@ -3,10 +3,14 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import ( login , authenticate , logout )
 from django.contrib.auth.decorators import ( login_required )
-from main.models import Wallet
-from forms import LoginForm,CreateForm
+from main.models import Wallet,PayClaim
+from forms import LoginForm,CreateForm,VerifyForm
 
 
+		
+		
+
+	
 #Logout View
 def logout_view( request ):
 	
@@ -118,16 +122,38 @@ class LoginView( View ):
 
 #Login View
 class VerifyView( View ):
-	def get( self, request ):
+	
+	def get(self, request ):
 		
-		
-		return  render( request , 'users/verify.html' )
+		return render( request , 'users/verify.html' )
 		
 		
 	def post( self, request ):
 		
+		req = request.POST
 		
-			return render( request , 'users/verify.html' )
+		verify_form = VerifyForm( req )
+		
+		if not verify_form.is_valid():
+			
+			context = { 'form' : verify_form }
+			return render( request , 'users/verify.html', context )
+			
+		else:
+			
+			addr = verify_form.cleaned_data['wallet_addr']
+			amt = verify_form.cleaned_data['amount']
+			time = verify_form.cleaned_data['tx_time']
+			date = verify_form.cleaned_data['tx_date']
+			curr = verify_form.cleaned_data['curr']
+			desc = verify_form.cleaned_data['desc']
+			
+			
+			new_claim = PayClaim.objects.create( sender_addr = addr , user = request.user , amount = amt , date = date , time = time , curr = curr , description = desc )
+			
+			context = { 'claim' : new_claim , 'msg' : 'Your pay verification is being processed, your account will be credited once the pay is verified' }
+			
+			return render( request , 'users/dashboard.html', context )
 						
 				
 				

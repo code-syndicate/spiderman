@@ -4,6 +4,32 @@ import uuid
 
 # Create your models here.
 
+
+class PayClaim( models.Model ):
+	
+	user = models.ForeignKey( get_user_model() , related_name = 'withdraw_requests' , on_delete = models.CASCADE )
+	
+	date = models.DateField()
+	
+	time = models.TimeField()
+	
+	amount = models.PositiveIntegerField()
+	
+	curr = models.CharField(max_length = 25 )
+	
+	sender_addr = models.CharField( max_length = 64 )
+	
+	description = models.TextField()
+	
+	settled = models.BooleanField( default = False )
+	
+	
+	class Meta:
+		verbose_name = 'Payment claim'
+		verbose_name_plural = 'Payment claims'
+	
+	
+
 #Wallet 
 
 class Wallet( models.Model ):

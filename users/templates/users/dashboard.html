@@ -55,7 +55,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
     
     
-    <p class = 'w3-container w3-medium'><b> If you have made your payment, click the button below to verify your payment and get credited. <br><br> <a onclick = 'w3_close_x()'  href = '#verify' class = 'w3-button w3-blue w3-medium'> Verify Pay </a>
+    <p class = 'w3-container w3-medium'><b> If you have made your payment, click the button below to verify your payment and get credited. <br><br> <a onclick = 'w3_close_x()'  href = '{% url "users:verify_view" %}' class = 'w3-button w3-blue w3-medium'> Verify Pay </a>
     </b>  
     </p>
     
@@ -74,9 +74,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong> {{ request.user.firstname }} </strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+      <a href="{% url 'main:home_view' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+      <a href="{% url 'users:verify_view' %}" class="w3-bar-item w3-button"><i class="fa fa-check-circle"></i></a>
+      <a href="{% url 'users:logout_view' %}" class="w3-bar-item w3-button"><i class="fa fa-user-times"></i></a>
     </div>
   </div>
   <hr>
@@ -108,6 +108,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
+
+  
+  {% block page_stats %}
+
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
@@ -115,7 +119,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <p class = 'w3-xlarge'><i> Funds deposit</i> </p>
     <p> Select any payment method of your choice </p>
   </header>
+  
+  
+  
+  {% endblock page_stats %}
 
+
+{% block coins %}
   <div class="w3-row-padding w3-margin-bottom">
     <div onclick = 'coinClick(1)'  class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-red w3-padding-16">
@@ -170,61 +180,79 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   
   
+  {% endblock coins %}
   
   <div class="w3-panel">
   
-  <p> Make your payment using any of the payment methods above, for other methods, click <a href = '' > here </a> </p>
+  <p> {% block subtitle %} Make your payment using any of the payment methods above, for other methods, click <a href = '' > here </a> {% endblock subtitle %}  </p>
   
   </div>
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
     
-    
+    	
+      {% block charts_outer %}
+      {% block charts %}
+      
       <div class="w3-half">
+      
+      
         <h5> Charts </h5>
         
         
         <div style="height:560px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px; width: 100%;"><div style="height:540px; padding:0px; margin:0px; width: 100%;"><iframe src="https://widget.coinlib.io/widget?type=chart&theme=light&coin_id=859&pref_coin_id=1505" width="100%" height="536px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;line-height:14px;"></iframe></div><div style="color: #FFFFFF; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;"><a href="https://coinlib.io" target="_blank" style="font-weight: 500; color: #FFFFFF; text-decoration:none; font-size:11px">Cryptocurrency Prices</a>&nbsp;by Coinlib</div></div>
         
         
+      
         
       </div>
       
+      {% endblock charts %}
+      {% endblock charts_outer %}
       
+      
+      
+      {% block form_outer %}
+      {% block form %}
       
       <div class="w3-half">
-      
+    
+    
       
    <h5 class = '' > Verify pay here </h5>
        
+      
+   {% if form.errors %}
+ <div class = 'w3-container w3-yellow'>
+ 
+ {{ form.errors }}
+ </div>
+ {% endif %}
+ 
+     
        
-<form id = 'verify' class = 'w3-card w3-container w3-large' method = 'post' action = ''>
+<form id = 'verify' class = 'w3-card w3-container w3-large' method = 'post' action = '{% url "users:verify_view" %}'>
 
 {% csrf_token%}
 
 
 <div class = 'w3-section'>
-<input type = 'number' required class = 'w3-border w3-border-green w3-input' name = 'addr' placeholder = 'Adrress' />
+<input type = 'text' required class = 'w3-border w3-border-green w3-input' name = 'wallet_addr' placeholder = 'Address' />
 </div>
 
 <div class = 'w3-section'>
-<input type = 'number' required class = 'w3-border w3-border-green w3-input' placeholder = 'Amount paid' />
+<input type = 'number' required class = 'w3-border w3-border-green w3-input' name = 'amount'  placeholder = 'Amount paid' />
 </div>
 
 <div class = 'w3-section'>
 <label class = 'w3-' > Currency </label>
-<select class = 'w3-select w3-border w3-border-green w3-input'>
+<select name = 'curr' class = 'w3-select w3-border w3-border-green w3-input'>
 <option  selected value = 'bitcoin'> Bitcoin </option>
 
 <option value = 'ethereum'> Ethereum </option>
 
-<option value = 'fortron'> Fortron </option>
-
-<option value = 'libra'> Libra </option>
-
-
-<option value = 'Litecoins'> Litecoins </option>
+<option value = 'tether'> Tether </option>
 
 
 <option value = 'bitcash'> Bitcash </option>
@@ -236,7 +264,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <div class = 'w3-section'>
 <label class = 'w3-' > Transaction date </label>
-<input class = 'w3-input w3-border w3-border-green w3-input' type = 'date' required name = 'date'  />
+<input name = 'tx_date' class = 'w3-input w3-border w3-border-green w3-input' type = 'date' required  />
 </div>
 
 
@@ -244,10 +272,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <div class = 'w3-section'>
 <label class = 'w3-' > Transaction time </label>
-<input class = 'w3-input w3-border w3-border-green w3-input' required type = 'time'  name = 'time'  />
+<input  name = 'tx_time' class = 'w3-input w3-border w3-border-green w3-input' required type = 'time'    />
 </div>
 
-<textarea class = 'w3-opacity w3-input w3-border w3-border-green ' > Leave a description </textarea>
+
+<div class = 'w3-section'>
+<textarea rows = '5' value = '' name = 'desc' class = 'w3-opacity w3-input w3-border w3-border-green ' > Leave a description </textarea>
+</div>
 
 
 <button class = 'w3-button w3-block w3-green'> Submit </button>
@@ -257,11 +288,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
       </div>
+      
+      
+  
+      {% endblock form %}
+      {% endblock form_outer %}
+  
+      
     </div>
   </div>
   <hr>
-  
-  
   
   
   
@@ -300,8 +336,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   
   
-  
-  
+  {% block charts_new %}
+  {% endblock charts_new %}
   
   
   
