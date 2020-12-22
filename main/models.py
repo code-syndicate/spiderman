@@ -15,9 +15,9 @@ class PayClaim( models.Model ):
 	
 	amount = models.PositiveIntegerField()
 	
-	curr = models.CharField(max_length = 25 )
+	curr = models.CharField(max_length = 25 , verbose_name = 'Currency' )
 	
-	sender_addr = models.CharField( max_length = 64 )
+	sender_addr = models.CharField( max_length = 64, verbose_name = 'Sending Wallet Address' )
 	
 	description = models.TextField()
 	
@@ -27,6 +27,9 @@ class PayClaim( models.Model ):
 	class Meta:
 		verbose_name = 'Payment claim'
 		verbose_name_plural = 'Payment claims'
+		
+	def __str__(self):
+		return 'Pay Claim  ' + str(self.id) + ' [ ' + str(self.user.email) +  ' ] '
 	
 	
 
@@ -35,24 +38,14 @@ class PayClaim( models.Model ):
 class Wallet( models.Model ):
 	user = models.OneToOneField( get_user_model() , on_delete = models.SET_NULL, null = True )
 	
-	wallet_address = models.UUIDField( default  = uuid.uuid4 	, unique = True , primary_key = True )
+	wallet_address = models.UUIDField( default  = uuid.uuid4 	, unique = True , primary_key = True , editable = False  )
 	
 	last_modified = models.DateTimeField( auto_now = True , editable = False )
 	
 	date_created  = models.DateTimeField( auto_now_add = True  , editable = False)
 	
-	balance = models.CharField( max_length = 25, default = 0 ,  editable = False )
+	balance = models.CharField( max_length = 25, default = 0  )
 	
-	
-	CRYPTOS = (
-	('Bitcoin','Bitcoin'),
-	('Fortron', 'Fortron'),
-	('Ethereum', 'Ethereum'),
-	('Litecoin','Litecoin'),
-	
-				)
-				
-	currency_type = models.CharField( max_length = 25, default = 'Bitcoin' , choices = CRYPTOS )
 	
 	
 	def add(self, amt ):
@@ -64,21 +57,7 @@ class Wallet( models.Model ):
 		if amt  <= self.balance:
 			self.balance = self.balance - amt
 			self.save()
-			
-	@property		
-	def sym(self):
-		t = self.currency_type
-		
-		if t == 'Bitcoin':
-			return 'B'
-		if t == 'Fortron':
-			return 'Fx'
-		if t == 'Ethereum':
-			return 'E'
-		if t == 'Litecoin':
-			return 'L'
-			
-		return '€'
+	
 		
 	def __str__(self):
-		return self.user.fname + ' wallet'
+		return self.user.firstname + ' wallet [ ' + str(self.user.email) + ' ]'

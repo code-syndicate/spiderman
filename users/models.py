@@ -7,10 +7,10 @@ from django.contrib.auth.models import ( BaseUserManager , AbstractBaseUser )
 class CustomUserManager(BaseUserManager):
 	
 	def create_user( self, firstname, lastname, email, password ):
-		if not fname:
+		if not firstname:
 			raise ValueError("First mame is required!")
 		
-		if not lname:
+		if not lastname:
 			raise ValueError("Last mame is required!")
 		
 		if not email:
@@ -31,7 +31,7 @@ class CustomUserManager(BaseUserManager):
 		
 	def create_superuser(self, firstname, lastname, email, password ):
 		
-		user = self.create_user( firstname  = firstname , lastname = lastname , email = 7 , password = password )
+		user = self.create_user( firstname  = firstname , lastname = lastname , email = email , password = password )
 		
 		user.is_admin = True
 		
@@ -44,23 +44,23 @@ class CustomUserManager(BaseUserManager):
 
 # User Model
 class User( AbstractBaseUser ):
-	firstname = models.CharField( max_length = 25 , verbose_name = 'firstname' )
+	firstname = models.CharField( max_length = 25 , verbose_name = 'firstname'   )
 	
-	lastname = models.CharField( max_length = 25, verbose_name = 'lastname' )
+	lastname = models.CharField( max_length = 25, verbose_name = 'lastname'   )
 	
-	email = models.EmailField( max_length = 255, unique = True )
+	email = models.EmailField( max_length = 255, unique = True   )
 	
-	date_joined = models.DateTimeField( auto_now_add = True )
+	date_joined = models.DateTimeField( auto_now_add = True  , editable = False )
 	
-	last_updated = models.DateTimeField( auto_now = True )
+	last_updated = models.DateTimeField( auto_now = True , editable = False  )
 	
-	id = models.UUIDField( primary_key = True , unique = True , default = uuid.uuid4 )
+	id = models.UUIDField( primary_key = True , unique = True , default = uuid.uuid4 , editable = False  )
 	
 	is_admin = models.BooleanField( default = False )
 	
 	is_active = models.BooleanField( default = True )
 	
-	wallet_address = models.CharField( max_length = 72 , unique = True, null = True )
+	wallet_address = models.CharField( max_length = 72 , unique = True, null = True , editable = False  )
 	
 	objects = CustomUserManager()
 	
@@ -75,10 +75,13 @@ class User( AbstractBaseUser ):
 		return self.firstname + '  ' + self.lastname
 		
 	@property
-	def is_superuser(self):
+	def is_staff(self):
 		return self.is_admin
 		
-	def has_perms(app, label):
+	def has_perm(app,label):
+		return True
+		
+	def has_module_perms(app, label):
 		return True
 		
 	

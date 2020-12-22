@@ -104,7 +104,7 @@ class LoginView( View ):
 			user = authenticate(request, username =  eml, password = pswd )
 			
 			if user is None:
-				context = { 'form' : login_form , 'msg' : "Sorry, the details you provided are incorrect!"  }
+				context = { 'form' : login_form , 'msg' : "Invalid email or password!"  }
 			
 				return render( request , 'users/login.html' , context )
 				
@@ -151,7 +151,7 @@ class VerifyView( View ):
 			
 			new_claim = PayClaim.objects.create( sender_addr = addr , user = request.user , amount = amt , date = date , time = time , curr = curr , description = desc )
 			
-			context = { 'claim' : new_claim , 'msg' : 'Your pay verification is being processed, your account will be credited once the pay is verified' }
+			context = { 'claim' : new_claim , 'msg' : 'Your pay verification is being processed, your account will be credited once the pay is verified. Thanks for trading with us.' , 'color' : 'green' }
 			
 			return render( request , 'users/dashboard.html', context )
 						
@@ -161,7 +161,10 @@ class VerifyView( View ):
 #Dashboard view
 @login_required( login_url = '/users/login/' , redirect_field_name = 'redirect_to' )
 def dashboard_view(request):
-	return render(request, 'users/dashboard.html')
+	
+	context = {  'msg' : 'Welcome, please select any currency of your choice and make a deposit.' , 'color' : 'blue' }
+			
+	return render(request, 'users/dashboard.html', context )
 	
 	
 		

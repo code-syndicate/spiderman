@@ -1,5 +1,6 @@
-from django.apps import AppConfig
+﻿from django.apps import AppConfig
 
 
 class MainConfig(AppConfig):
-    name = 'main'
+	name = 'main'
+	verbose_name = "Wallets and Claims Management"
