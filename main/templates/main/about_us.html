@@ -53,23 +53,23 @@
                     <div class="icon-links d-flex align-items-center">
                        
                         
-                        <a href="contact-us.html" class="btn btn-round d-none d-sm-block blob-small">CONTACT US</a>
+                        <a href="{% url 'main:contact_view' %}" class="btn btn-round d-none d-sm-block blob-small">CONTACT US</a>
                     </div>
                     <div class="menu-links">
                         <nav class="main-menu white">
                             <ul>
                                 <li class="active">
-                                    <a href="index-2.html">Home </a>
+                                    <a href="{% url 'main:home_view' %}"> Home </a>
                                     
                                 </li>
                                 
                                 <li>
-                                    <a href="about-us.html">About Us </a>
+                                    <a href="{% url 'main:about_view' %}">About Us </a>
                                     
 
                                 </li>
-                                <li><a href="login.html">Login</a></li>
-                                        <li><a href="signup.html">Signup</a></li>
+                                <li><a href="{% url 'users:login_view' %}" >Login</a></li>
+                                        <li><a href = "{% url 'users:create_view' %}">Signup</a></li>
                             </ul>
                         </nav>
                     </div>
