@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Factor Investpedia </title>
+    <title>FxInvestor </title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +44,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-5 col-sm-4 col-5">
                     <div class="logo transition-4">
-                        <a href="index-2.html">
+                        <a href="{% url 'main:home_view' %}">
                             <img src="img/logo/logo.png" class="transition-4" alt="logo">
                         </a>
                     </div>
@@ -112,7 +112,7 @@
                 <div class="col-md-4 text-center text-md-right">
                     <nav aria-label="breadcrumb" class="banner-breadcump">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home fs-12 mr-5"></i>Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'main:home_view' %}"><i class="fas fa-home fs-12 mr-5"></i>Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">About Us</li>
                         </ol>
                     </nav>
@@ -201,7 +201,7 @@
              <span class="green">25 Years</span> of Experience in the <span class="green">Industry</span>
            </h1>
                         <p class="white mb-55 mb-md-30 pr-60 pr-md-00"></p>
-                        <a href="#" class="btn btn-square  blob-small">Contact us
+                        <a href="{% url 'main:contact_view' %}" class="btn btn-square  blob-small">Contact us
             <i class="fas fa-long-arrow-alt-right ml-20"></i>
           </a>
                     </div>
@@ -391,9 +391,9 @@
                     <div class="footer-links pt-85 pt-md-50 mb-sm-70">
                         <h5 class="green f-700 mb-35">Quick Links</h5>
                         <ul class="links-list">
-                            <li><a href="#" >Home</a></li>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
+                            <li><a href="{% url 'main:home_view' %}" >Home</a></li>
+                            <li><a href="{% url 'main:about_view' %}">About Us</a></li>
+                            <li><a href="{% url 'main:contact_view' %}">Contact Us</a></li>
                             
                         </ul>
                     </div>
