@@ -9,6 +9,8 @@ urlpatterns = [
 
 path('logout/', views.logout_view , name = 'logout_view' ) ,
 
+path('logged-out/', views.logged_out_view , name = 'logged_out_view' ) ,
+
 path( 'new/', views.CreateView.as_view() , name = 'create_view' ),
 
 path( 'dashboard/', views.dashboard_view , name = 'dashboard_view' ),

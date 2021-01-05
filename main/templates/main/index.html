@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-     <base href="/static/main/" target="_blank">
+     <base href="/static/main/" >
     
     
     <!-- Calling Favicon -->
@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" class="color-changing" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <!-- End CSS files -->
 </head>
 
@@ -38,6 +41,28 @@
 
     <!-- Header start -->
     <header class="transperant-head transition-4 ">
+    
+    
+    
+    
+    
+  {% if msg %}
+  <!-- alert panel-->
+  
+ <div id = 'msg01' style = 'display:block;z-index:100;' class = 'w3-modal  '>
+ <div class = ' w3-modal-content w3-animate-left w3-padding-16 w3-round-large w3-container w3-card-4 w3-{{color}}'>
+ 
+ <p class = 'w3-medium '  style = 'font-family:Raleway;font-weight:bold' > {{ msg | safe  }} </p>
+ 
+ <button onclick = 'document.getElementById("msg01").style.display = "none" ' class = 'w3-btn w3-display-topright'> &times </button>
+ 
+ </div>
+ </div>
+  {% endif %}
+  
+    
+    
+    
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-5 col-sm-4 col-5">
@@ -59,15 +84,44 @@
                                 <li class="active">
                                     <a href="{% url 'main:home_view' %}">Home </a>
                                     
+                                    
+                                    <li class="active">
+                                    <a href="{% url 'users:dashboard_view' %}"> Dashboard</a>
+                                    
+                                </li>
+                                    
                                 </li>
                                 
+                                
+                                <li class="active">
+                                    <a href="{% url 'users:verify_view' %}"> Verify Pay </a>
+                                    
+                                </li>
+                                
+                                
+                                {% if not request.user.is_authenticated %}
+                                
+                                <li><a href="{% url 'users:login_view' %}">Login</a></li>
+                                
+                                {% else %}
+                                
+                                <li class="active">
+                                    <a href="{% url 'users:logout_view' %}"> Logout </a>
+                                    
+                                </li>
+                                
+                                {% endif %}
+                                
+                                        <li><a href="{% url 'users:create_view' %}">Signup</a></li>
+                                        
+                                  
                                 <li>
                                     <a href="{% url 'main:about_view' %}">About Us </a>
                                     
 
-                                </li>
-                                <li><a href="{% url 'users:login_view' %}">Login</a></li>
-                                        <li><a href="{% url 'users:create_view' %}">Signup</a></li>
+                                </li>      
+                                        
+                                        
                             </ul>
                         </nav>
                     </div>

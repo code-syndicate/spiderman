@@ -1,0 +1,84 @@
+﻿{% extends 'main/base.html' %}
+
+
+{% block body %}
+
+{% block nav %}
+{{block.super }}
+{% endblock nav %}
+
+<div class = 'w3-row-padding w3-center'>
+
+<div class = 'w3-col s12 l12 m12 w3-center'>
+
+
+
+  {% if msg %}
+  <!-- alert panel-->
+  
+ <div id = 'msg01' style = 'display:block;z-index:50;' class = 'w3-modal  '>
+ <div class = 'w3-large w3-modal-content w3-animate-left w3-padding-16 w3-container w3-card-4 w3-{{color}}'>
+ 
+ <p> {{ msg }} </p>
+ 
+ <button onclick = 'document.getElementById("msg01").style.display = "none" ' class = 'w3-btn w3-display-topright'> &times </button>
+ 
+ </div>
+ </div>
+  {% endif %}
+  
+
+<header class = 'w3-panel w3-center w3-container w3-grey w3-xxlarge'>
+
+<p class = ' w3-text-white'>Create a new  wallet </p>
+
+</header>
+
+</div>
+</div>
+
+
+
+<div class = 'w3-row-padding'>
+
+
+<div class = 'w3-col l6 m6 w3-mobile'>
+
+{% block cryptos %}
+{{block.super}}
+{% endblock cryptos %}
+
+</div>
+
+<div class = 'w3-col l6 m6 w3-mobile'>
+
+{% block create %}
+
+{{ block.super }}
+{% endblock create %}
+
+</div>
+
+
+
+
+{% block curr %}
+{{block.super}}
+{% endblock curr %}
+
+
+{% block bottomnav %}
+{{block.super}}
+{% endblock bottomnav %}
+
+
+
+{% block footer %}
+{{block.super}}
+
+{% endblock footer %}
+
+{% endblock body %}
+
+
+

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <base href="/static/main/" target="_blank">
+    <base href="/static/main/" >
     
     
     <!-- Calling Favicon -->
@@ -58,18 +58,48 @@
                     <div class="menu-links">
                         <nav class="main-menu white">
                             <ul>
+                            
                                 <li class="active">
-                                    <a href="{% url 'main:home_view' %}"> Home </a>
+                                    <a href="{% url 'main:home_view' %}">Home </a>
+                                    
+                                    
+                                    <li class="active">
+                                    <a href="{% url 'users:dashboard_view' %}"> Dashboard</a>
+                                    
+                                </li>
                                     
                                 </li>
                                 
+                                
+                                <li class="active">
+                                    <a href="{% url 'users:verify_view' %}"> Verify Pay </a>
+                                    
+                                </li>
+                                
+                                
+                                {% if not request.user.is_authenticated %}
+                                
+                                <li><a href="{% url 'users:login_view' %}">Login</a></li>
+                                
+                                {% else %}
+                                
+                                <li class="active">
+                                    <a href="{% url 'users:logout_view' %}"> Logout </a>
+                                    
+                                </li>
+                                
+                                {% endif %}
+                                
+                                        <li><a href="{% url 'users:create_view' %}">Signup</a></li>
+                                        
+                                  
                                 <li>
                                     <a href="{% url 'main:about_view' %}">About Us </a>
                                     
 
-                                </li>
-                                <li><a href="{% url 'users:login_view' %}" >Login</a></li>
-                                        <li><a href = "{% url 'users:create_view' %}">Signup</a></li>
+                                </li>      
+                                        
+                                        
                             </ul>
                         </nav>
                     </div>

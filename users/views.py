@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import ( login , authenticate , logout )
 from django.contrib.auth.decorators import ( login_required )
+from django.contrib.auth.mixins import LoginRequiredMixin 
 from main.models import Wallet,PayClaim
 from forms import LoginForm,CreateForm,VerifyForm
 
@@ -18,7 +19,15 @@ def logout_view( request ):
 	
 	request.session.flush()
 	
-	return redirect('/')
+	return redirect('/users/logged-out', )
+	
+	
+
+#Logout View
+def logged_out_view( request ):
+	
+	return render( request, 'main/index.html' , { 'msg' : 'You have been logged out' , 'color' : 'green' } )
+	
 
 
 #New User View	
@@ -39,7 +48,9 @@ class CreateView( View ):
 		
 		if not create_form.is_valid():
 			
-			context = { 'form' : create_form }
+			msg = 'Please fill the form correctly and try again!'
+			
+			context = { 'form' : create_form , 'msg' : msg , 'color' : 'yellow'  }
 		
 			return render( request , 'users/new.html' , context )
 			
@@ -47,7 +58,7 @@ class CreateView( View ):
 			
 			if not ( create_form.cleaned_data['password1'] and create_form.cleaned_data['password2'] and ( create_form.cleaned_data['password2'] == create_form.cleaned_data['password1'] ) ):
 				
-				context = { 'form' : create_form , 'msg' : "Password fields do not match!" }
+				context = { 'form' : create_form , 'msg' : "Password fields do not match!" , 'color' : 'yellow' }
 		
 				return render( request , 'users/new.html' , context )
 			
@@ -92,7 +103,10 @@ class LoginView( View ):
 		
 		if not login_form.is_valid():
 			
-			context = { 'form' : login_form }
+			
+			msg = 'Please enter a valid email and password'
+			
+			context = { 'form' : login_form  , 'msg' : msg , 'color' : 'yellow'}
 			
 			return render( request , 'users/login.html' , context )
 		else:
@@ -104,7 +118,7 @@ class LoginView( View ):
 			user = authenticate(request, username =  eml, password = pswd )
 			
 			if user is None:
-				context = { 'form' : login_form , 'msg' : "Invalid email or password!"  }
+				context = { 'form' : login_form , 'msg' : "Invalid email or password!" , 'color' : 'yellow' }
 			
 				return render( request , 'users/login.html' , context )
 				
@@ -121,7 +135,9 @@ class LoginView( View ):
 					
 
 #Login View
-class VerifyView( View ):
+class VerifyView(LoginRequiredMixin , View  ):
+	login_url =  '/users/login/'
+	redirect_field_name = 'redirect_to'
 	
 	def get(self, request ):
 		
