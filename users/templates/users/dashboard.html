@@ -8,6 +8,10 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Codystar&family=Langar&family=Open+Sans:wght@300;700&family=Raleway:ital,wght@0,300;0,500;1,800&family=Roboto:ital,wght@0,300;1,100;1,900&display=swap" rel="stylesheet">
 
+
+ <script src="https://kit.fontawesome.com/a160ae3ffc.js" crossorigin="anonymous"></script>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Calling Favicon -->
@@ -81,7 +85,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar  w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;display:none" id="mySidebar"><br>
+<nav class="w3-sidebar  w3-display-container w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;display:none" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="https://ui-avatars.com/api/?name={{request.user.lastname}}+{{request.user.firstname}}" class="w3-circle w3-margin-right" style="width:46px">
@@ -93,7 +97,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       
       <a href="{% url 'users:create_view' %}" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i></a>
       
-      <a href="{% url 'users:logout_view' %}" class="w3-bar-item w3-button"><i class="fa fa-user-times"></i></a>
+      <a href="{% url 'users:dashboard_view' %}" class="w3-bar-item w3-button"><i class="fa fa-dashboard"></i></a>
     </div>
   </div>
   <hr>
@@ -105,8 +109,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   
   
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-small w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+  <div class="w3-bar-block ">
+  
+    <a href="#" class="w3-display-topright w3-bar-item w3-button w3-padding-16 w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close </a>
     
         <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money fa-fw"></i>  Balance : <b class ='w3-tag w3-round'>USD <span class = 'w3-large'> {{request.user.wallet.balance}} </span> </b> </a>
         
@@ -545,6 +550,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </div>
 
 <script>
+
 // Get the Sidebar
 
 

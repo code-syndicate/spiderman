@@ -24,11 +24,15 @@
       
      <ul class = 'w3-ul w3-row-padding'>
      
-     <li style = 'margin-bottom:5px;'  class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Balance</span>   <span class = 'w3-large w3-tag  w3-round w3-right'> {{ request.user.wallet.balance }} USD</span> </li>
+     <li style = 'margin-bottom:5px;'  class = 'w3-rightbar w3-half w3-padding-32 w3-green '>
+     
+     <i class = 'w3-large w3-padding fa fa-money-bill '></i>
+     
+      <span class = 'w3-large' >Balance</span>   <span class = 'w3-large w3-tag  w3-round w3-right'> {{ request.user.wallet.balance }} USD</span> </li>
      
      
      
-     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' > Bonus </span>   <span style = 'overflow:auto' class = 'w3-large  w3-tag  w3-round w3-right'> {{ request.user.wallet.bonus  }}</span> </li>
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' > Bonus </span>   <span style = 'overflow:auto' class = 'w3-large  w3-tag  w3-round w3-right'> {{ request.user.wallet.bonus  }} USD</span> </li>
      
      
      </ul>
@@ -40,7 +44,10 @@
      
      
      
-     <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '> <span class = 'w3-large' > Account status </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> 
+     <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '>
+     
+     <i class = 'w3-large w3-padding fa fa-switch '></i>
+      <span class = 'w3-large' > Account status </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> 
      
      
      
@@ -58,7 +65,11 @@
      
      <ul class = 'w3-ul w3-row-padding'>
      
-     <li  style = 'margin-bottom:5px' class = 'w3-half w3-rightbar  w3-padding-32 w3-green '> <span class = 'w3-large' >Account name</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.get_fullname }}</span> </li>
+     
+     <li  style = 'margin-bottom:5px' class = 'w3-half w3-rightbar  w3-padding-32 w3-green '>
+     
+     <i class = 'w3-large w3-padding fa fa-user '></i>
+      <span class = 'w3-large' >Account name</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.get_fullname }}</span> </li>
      
      
      
@@ -75,17 +86,26 @@
      <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Wallet ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.wallet_address | truncatechars:25  }}</span> </li>
      
      
-     <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Email</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.email }}</span> </li>
+     <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> 
+     
+     <i class = 'w3-large w3-padding fa fa-envelope '></i>
+     <span class = 'w3-large' >Email</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.email }}</span> </li>
      
      </ul>
      
      
      <ul class = 'w3-ul w3-row-padding'>
      
-     <li style = 'margin-bottom:5px'  class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Last login </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.last_login }} </span> </li>
+     <li style = 'margin-bottom:5px'  class = 'w3-rightbar w3-half w3-padding-32 w3-green '> 
+     
+     <i class = 'w3-large w3-padding fas fa-user-clock '></i>
+     <span class = 'w3-large' >Last login </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.last_login }} </span> </li>
      
      
-     <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Member since</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.date_joined.date }}</span> </li>
+     <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> 
+     
+     <i class = 'w3-large w3-padding fa fa-calendar '></i>
+     <span class = 'w3-large' >Member since</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.date_joined.date }}</span> </li>
      
      </ul>
       
@@ -105,7 +125,9 @@
     <h5><b><i class="fa fa-user"></i>  Account Information Page </b></h5>
     
     <p class = 'w3-medium w3-text-green'> Access your balance,bonus,rating and also manage your info.  </p>
-    <p  style = 'font-family:langar'  class = 'w3-tag w3-small w3-round'> {{request.user.email}} </p>
+   
+   <a href = '{% url "users:dashboard_view" %}' > <p class = 'w3-button w3-tiny w3-round-xlarge w3-khaki'> Skip to dashboard </p></a>
+    
   </header>
   
   

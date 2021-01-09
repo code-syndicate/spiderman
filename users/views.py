@@ -131,11 +131,20 @@ class LoginView( View ):
 				return render( request , 'users/login.html' , context )
 				
 			else:
+				
+				if user.is_active == False:
+					context = { 'form' : login_form , 'msg' : "Your has been disabled.Please contact the admin." , 'color' : 'yellow' }
+					
+					return render( request , 'users/login.html' , context )
+				
+					
+					
+					
 				login( request, user )
 				
 				if request.GET.get('redirect_url',None) is None:
 					
-					return redirect('/users/dashboard/')
+					return redirect('/users/manage/')
 					
 				else:
 					
