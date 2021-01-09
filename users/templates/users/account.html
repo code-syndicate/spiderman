@@ -32,7 +32,10 @@
      
      
      
-     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' > Bonus </span>   <span style = 'overflow:auto' class = 'w3-large  w3-tag  w3-round w3-right'> {{ request.user.wallet.bonus  }} USD</span> </li>
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> 
+     
+     <i class = 'w3-large w3-padding fa fa-dollar'></i>
+     <span class = 'w3-large' > Bonus </span>   <span style = 'overflow:auto' class = 'w3-large  w3-tag  w3-round w3-right'> {{ request.user.wallet.bonus  }} USD</span> </li>
      
      
      </ul>
@@ -40,13 +43,25 @@
      
      <ul class = 'w3-ul w3-row-padding'>
      
-     <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '> <span class = 'w3-large' > Withdrawable amount</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.balance }} USD</span> </li>
+     <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '>
+     
+     <i class = 'w3-large w3-padding fa fa-money-check '></i>
+      <span class = 'w3-large' > Withdrawable amount</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.balance }} USD</span> </li>
      
      
      
      <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '>
      
-     <i class = 'w3-large w3-padding fa fa-switch '></i>
+     
+     {% if  request.user.is_active %} 
+     
+     <i class = 'w3-large w3-padding fa fa-user-check '></i>
+     {% else %}
+     
+     <i class = 'w3-large w3-padding fa fa-user-times '></i>
+     {% endif %}
+     
+     
       <span class = 'w3-large' > Account status </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> 
      
      
@@ -68,14 +83,19 @@
      
      <li  style = 'margin-bottom:5px' class = 'w3-half w3-rightbar  w3-padding-32 w3-green '>
      
-     <i class = 'w3-large w3-padding fa fa-user '></i>
+     <i class = 'w3-large w3-padding fa fa-info-circle '></i>
       <span class = 'w3-large' >Account name</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.get_fullname }}</span> </li>
      
      
      
      
      
-     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >User ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.id | truncatechars:25  }}</span> </li>
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> 
+     
+     
+     <i class = 'w3-large w3-padding fa fa-id-card-alt'></i>
+     
+     <span class = 'w3-large' >User ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.id | truncatechars:25  }}</span> </li>
      
      </ul>
      
@@ -83,7 +103,10 @@
      <ul class = 'w3-ul w3-row-padding'>
      
      
-     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Wallet ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.wallet_address | truncatechars:25  }}</span> </li>
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '>
+     
+     <i class = 'w3-large w3-padding fa fa-wallet '></i>
+      <span class = 'w3-large' >Wallet ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.wallet_address | truncatechars:25  }}</span> </li>
      
      
      <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> 
@@ -126,7 +149,7 @@
     
     <p class = 'w3-medium w3-text-green'> Access your balance,bonus,rating and also manage your info.  </p>
    
-   <a href = '{% url "users:dashboard_view" %}' > <p class = 'w3-button w3-tiny w3-round-xlarge w3-khaki'> Skip to dashboard </p></a>
+   <a href = '{% url "users:dashboard_view" %}' > <p class = 'w3-button w3-tiny w3-round-xlarge w3-khaki'> Skip to deposits </p></a>
     
   </header>
   
