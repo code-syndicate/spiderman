@@ -7,7 +7,7 @@ from .models import *
 
 class WalletAdmin(admin.ModelAdmin): 
 	fields = ['user' , 'balance' , 'last_modified' ]
-	list_display = ('user','balance','last_modified',)
+	list_display = ('user','balance',)
 	list_filter = ['balance','date_created']
 	search_fields = ['wallet_address' ]
 
