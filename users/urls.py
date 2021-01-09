@@ -22,6 +22,9 @@ path( 'login/', views.LoginView.as_view() , name = 'login_view' ),
 path( 'verify-pay/', views.VerifyView.as_view() , name = 'verify_view' ),
 
 
+path( 'manage/', views.ManageView.as_view() , name = 'manage_view' ),
+
+
 
 
 

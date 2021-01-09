@@ -8,7 +8,15 @@ from main.models import Wallet,PayClaim
 from forms import LoginForm,CreateForm,VerifyForm
 
 
+
+
+
+#Manage View
+class ManageView( View ):
+	def get( self, request ):
 		
+		return render( request , 'users/account.html' );
+			
 		
 
 	

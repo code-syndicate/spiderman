@@ -44,7 +44,10 @@ class Wallet( models.Model ):
 	
 	date_created  = models.DateTimeField( auto_now_add = True  , editable = False)
 	
-	balance = models.CharField( max_length = 25, default = 0  )
+	balance = models.PositiveIntegerField( default = 0  )
+	
+	
+	bonus = models.PositiveIntegerField( default = 0  )
 	
 	
 	

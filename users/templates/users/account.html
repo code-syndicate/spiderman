@@ -1,0 +1,116 @@
+﻿{% extends 'users/dashboard.html' %}
+
+	 {% block subtitle %} 
+	 Pay verification processes may take some time to complete
+	  {% endblock subtitle %} 
+
+
+      {% block form_outer %}
+      
+      {% block charts %}
+      
+      {{block.super}}
+     
+      {% endblock charts %}
+      
+      {% endblock form_outer %}
+      
+      
+      
+      
+
+      {% block charts_outer %}
+      
+      
+     <ul class = 'w3-ul w3-row-padding'>
+     
+     <li style = 'margin-bottom:5px;'  class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Balance</span>   <span class = 'w3-large w3-tag  w3-round w3-right'> {{ request.user.wallet.balance }} USD</span> </li>
+     
+     
+     
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' > Bonus </span>   <span style = 'overflow:auto' class = 'w3-large  w3-tag  w3-round w3-right'> {{ request.user.wallet.bonus  }}</span> </li>
+     
+     
+     </ul>
+     
+     
+     <ul class = 'w3-ul w3-row-padding'>
+     
+     <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '> <span class = 'w3-large' > Withdrawable amount</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.balance }} USD</span> </li>
+     
+     
+     
+     <li style = 'margin-bottom:5px'  class = 'w3-half w3-rightbar w3-padding-32 w3-green '> <span class = 'w3-large' > Account status </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> 
+     
+     
+     
+     {% if  request.user.is_active %} 
+     Active
+     {% else %}
+     Inactive
+     {% endif %}
+     
+     </span> </li>
+     
+     
+     </ul>
+     
+     
+     <ul class = 'w3-ul w3-row-padding'>
+     
+     <li  style = 'margin-bottom:5px' class = 'w3-half w3-rightbar  w3-padding-32 w3-green '> <span class = 'w3-large' >Account name</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.get_fullname }}</span> </li>
+     
+     
+     
+     
+     
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >User ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.id | truncatechars:25  }}</span> </li>
+     
+     </ul>
+     
+     
+     <ul class = 'w3-ul w3-row-padding'>
+     
+     
+     <li  style = 'margin-bottom:5px;overflow:auto' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Wallet ID </span>   <span style = 'overflow:auto' class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.wallet.wallet_address | truncatechars:25  }}</span> </li>
+     
+     
+     <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Email</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.email }}</span> </li>
+     
+     </ul>
+     
+     
+     <ul class = 'w3-ul w3-row-padding'>
+     
+     <li style = 'margin-bottom:5px'  class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Last login </span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.last_login }} </span> </li>
+     
+     
+     <li  style = 'margin-bottom:5px' class = 'w3-rightbar w3-half w3-padding-32 w3-green '> <span class = 'w3-large' >Member since</span>   <span class = ' w3-tag  w3-round w3-large w3-right'> {{ request.user.date_joined.date }}</span> </li>
+     
+     </ul>
+      
+      
+      
+      
+      {% endblock charts_outer %}
+
+
+
+	
+  {% block page_stats %}
+  
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-user"></i>  Account Information Page </b></h5>
+    
+    <p class = 'w3-medium w3-text-green'> Access your balance,bonus,rating and also manage your info.  </p>
+    <p  style = 'font-family:langar'  class = 'w3-tag w3-small w3-round'> {{request.user.email}} </p>
+  </header>
+  
+  
+  {% endblock page_stats %}
+
+	
+  {% block coins %}
+  {% endblock coins %}
