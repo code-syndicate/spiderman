@@ -3,6 +3,8 @@
 
 # Database
 *.sqlite3
+*db.sqlite3
+/db*.sqlite3
 /pycache
 /py_cache
 __pycache__
