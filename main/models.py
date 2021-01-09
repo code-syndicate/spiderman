@@ -40,7 +40,7 @@ class Wallet( models.Model ):
 	
 	wallet_address = models.UUIDField( default  = uuid.uuid4 	, unique = True , primary_key = True , editable = False  )
 	
-	last_modified = models.DateTimeField( auto_now = True  )
+	last_modified = models.DateTimeField( auto_now = True , editable = True  )
 	
 	date_created  = models.DateTimeField( auto_now_add = True  , editable = False)
 	
