@@ -632,19 +632,20 @@ function channel_change(){
 let channel = document.getElementById('pay_channels');
 
 
+let wlt = document.getElementsByClassName('w-ch');
+
+let bnk = document.getElementsByClassName('b-ch');
 
 if ( channel.value == 'wallet'){
 
 
-let ch = document.getElementsByClassName('w-ch');
+for( let i = 0;i < bnk.length;++i){
+bnk[i].style.display = 'none';
+}
 
-alert(JSON.stringify(ch));
-
-ch.map( s=> s.style.display = 'block' );
-
-
-let bnk = document.getElementsByClassName('b-ch');
-bnk.map( s=> s.style.display = 'none' );
+for( let i = 0;i < wlt.length;++i){
+wlt[i].style.display = 'block';
+}
 
 
 }
@@ -652,15 +653,13 @@ bnk.map( s=> s.style.display = 'none' );
 if ( channel.value == 'bank'){
 
 
-let ch = document.getElementsByClassName('b-ch');
+for( let i = 0;i < bnk.length;++i){
+bnk[i].style.display = 'block';
+}
 
-ch.map( a=> a.style.display = 'block' );
-
-
-let bnk = document.getElementsByClassName('w-ch');
-
-bnk.map( a=> a.style.display = 'none' );
-
+for( let i = 0;i < wlt.length;++i){
+wlt[i].style.display = 'none';
+}
 
 }
 
