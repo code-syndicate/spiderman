@@ -32,11 +32,11 @@
 
 <div class = 'w3-section'>
 <label> Withdrawal mode </label><br>
-<select class = 'w3-select  w3-border w3-border-green ' value = 'Choose payment channel' >
+<select id = 'pay_channels' onchange = 'channel_change()'  class = 'w3-select  w3-border w3-border-green ' >
 
 <option value = ''> Choose payment channel </option>
-<option value = 'Wallet'> Crypto Wallet</option>
-<option value = 'Bank Transfer'> Bank Transfer </option>
+<option value = 'wallet'> Crypto Wallet</option>
+<option value = 'bank'> Bank Transfer </option>
 </select>
 </div>
 
@@ -54,9 +54,42 @@
 </div>
 
 
-<div class = 'w3-section'>
+
+
+<div class = 'w3-section w-ch'>
+<label> Wallet type </label><br>
+<select class = 'w3-select  w3-border w3-border-green ' >
+
+<option value = ''> Choose wallet type </option>
+<option value = 'Wallet'> Bitcoin </option>
+<option value = 'Bank Transfer'> Ethereum </option>
+</select>
+</div>
+
+<div class = 'w3-section w-ch '>
 <label class = '' > Wallet Address </label>
-<input name = 'wallet_addr' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Wallet Address' required  />
+<input name = 'wallet_addr' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Wallet Address'  required = 'false' />
+</div>
+
+
+
+<div style = 'display:none'  class = 'w3-section  b-ch '>
+<label class = '' > Bank name </label>
+<input name = 'bank_name' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Bank name'  required = 'false'  />
+</div>
+
+
+
+<div style = 'display:none'  class = 'w3-section   b-ch '>
+<label class = '' > Account No </label>
+<input name = 'acct_no' class = 'w3-input w3-border w3-border-green w3-input' type = 'number' placeholder = 'Account No'  required = 'false'  />
+</div>
+
+
+
+<div  style = 'display:none' class = 'w3-section   b-ch '>
+<label class = '' > Bank Swiftcode </label>
+<input name = 'swift_code' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'SWIFT code' required = 'false'  />
 </div>
 
 
@@ -64,8 +97,10 @@
 
 
 
+
+
 <div class = 'w3-section'>
-<textarea rows = '4'  name = 'desc' class = ' w3-input w3-border w3-border-green ' > Leave a description </textarea>
+<textarea rows = '4'  name = 'desc' class = 'w3-textarea w3-input w3-border w3-border-green ' > Leave a description </textarea>
 </div>
 
 

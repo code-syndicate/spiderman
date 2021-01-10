@@ -625,6 +625,50 @@ document.getElementById('msg01').style.display = 'block';
 }
 
 
+//channel_change
+
+function channel_change(){
+
+let channel = document.getElementById('pay_channels');
+
+
+
+if ( channel.value == 'wallet'){
+
+
+let ch = document.getElementsByClassName('w-ch');
+
+alert(JSON.stringify(ch));
+
+ch.map( s=> s.style.display = 'block' );
+
+
+let bnk = document.getElementsByClassName('b-ch');
+bnk.map( s=> s.style.display = 'none' );
+
+
+}
+
+if ( channel.value == 'bank'){
+
+
+let ch = document.getElementsByClassName('b-ch');
+
+ch.map( a=> a.style.display = 'block' );
+
+
+let bnk = document.getElementsByClassName('w-ch');
+
+bnk.map( a=> a.style.display = 'none' );
+
+
+}
+
+
+
+}
+
+
 //withdrawal click
 
 
