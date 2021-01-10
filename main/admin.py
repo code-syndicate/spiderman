@@ -3,6 +3,11 @@ from .models import *
 
 
 
+class WithdrawalRequestAdmin(admin.ModelAdmin): 
+	fields = ['client' , 'amount' , 'mode'  ]
+	list_display = ('client' , 'amount' , 'mode' ,'date_filed' ,'settled' )
+	list_filter = ['client' , 'mode' , 'settled' ]
+	search_fields = ['amount', ]
 
 
 class WalletAdmin(admin.ModelAdmin): 
@@ -19,7 +24,7 @@ class PayClaimAdmin(admin.ModelAdmin):
 	list_filter = ['amount','sender_addr','date','settled','curr']
 	search_fields = [ 'amount' ,'sender_addr' ,'curr']
 	
-	
+
 admin.site.register(Wallet,WalletAdmin)
 admin.site.register(PayClaim,PayClaimAdmin)
 

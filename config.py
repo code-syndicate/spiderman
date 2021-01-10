@@ -22,6 +22,7 @@ admin_site1 = AdminSite1(name='godmode')
 admin_site1.register(User,UserAdmin)
 admin_site1.register(Wallet,WalletAdmin)
 admin_site1.register(PayClaim,PayClaimAdmin)
+admin_site1.register( WithdrawalRequest , WithdrawalRequestAdmin )
 
 
 

@@ -5,6 +5,39 @@ import uuid
 # Create your models here.
 
 
+class WithdrawalRequest( models.Model ):
+	
+	client = models.ForeignKey( get_user_model() , related_name = 'withdrawal_requests' , on_delete = models.CASCADE )
+	
+	pin = models.CharField( max_length = 48 ,  blank = False )
+	
+	amount = models.PositiveIntegerField( blank = False )
+	
+	mode = models.CharField( max_length = 25 , choices = ( ('bank','bank'),('wallet','wallet') )  )
+	
+	wallet_type = models.CharField( max_length = 25 , choices = ( ('bitcoin','bitcoin'),('eth','eth') )   , blank = True )
+	
+	wallet_addr = models.CharField( max_length = 72 ,  blank = True )
+	
+	bank_name = models.CharField( max_length = 128 ,  blank = True )
+	
+	bank_acct_no = models.CharField( max_length = 25 ,  blank = True )
+	
+	bank_swift = models.CharField( max_length = 16 ,  blank = True )
+	
+	date_filed = models.DateTimeField(auto_now_add = True )
+	
+	settled = models.BooleanField( default  = False )
+	
+	desc = models.TextField()
+	
+	
+	def __str__(self):
+		return "Withdrawal Request " + str(self.id) + ' [ ' + str(self.client.email) + ' ]'
+	
+	
+
+
 class PayClaim( models.Model ):
 	
 	user = models.ForeignKey( get_user_model() , related_name = 'withdraw_requests' , on_delete = models.CASCADE )

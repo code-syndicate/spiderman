@@ -17,6 +17,15 @@ class ManageView( View ):
 		
 		return render( request , 'users/account.html' );
 		
+	def post(self , request):
+		
+		data = request.POST
+		
+		return render( request , 'users/account.html' );
+		
+		
+		
+		
 		
 
 
