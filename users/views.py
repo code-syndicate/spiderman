@@ -5,7 +5,7 @@ from django.contrib.auth import ( login , authenticate , logout )
 from django.contrib.auth.decorators import ( login_required )
 from django.contrib.auth.mixins import LoginRequiredMixin 
 from main.models import Wallet,PayClaim
-from forms import LoginForm,CreateForm,VerifyForm
+from forms import LoginForm,CreateForm,VerifyForm,WithdrawalForm
 
 
 
@@ -17,11 +17,7 @@ class ManageView( View ):
 		
 		return render( request , 'users/account.html' );
 		
-	def post(self , request):
-		
-		data = request.POST
-		
-		return render( request , 'users/account.html' );
+	
 		
 		
 		
@@ -33,7 +29,32 @@ class ManageView( View ):
 class WithdrawView( View ):
 	def get( self, request ):
 		
-		return render( request , 'users/withdraw.html' );
+		return render( request , 'users/withdraw.html' )
+		
+	def post(self , request):
+		
+		form = WithdrawalForm( request.POST )
+		
+		if form.is_valid():
+			# do sth
+			
+			req = form.save( commit = False )
+			req.client = request.user
+			req.save()
+			
+			context = { 'msg' : "Your withdrawal request has been placed succesfully. We will get in touch soon. Best regards." , 'color' : 'green' }
+			
+			return render( request , 'users/dashboard.html' , context )
+			
+		else:
+			
+			
+			context = { 'msg' : str(form.errors) +  "Your withdrawal request was not successful. Please try again" , 'color' : 'red' }
+			
+			return render( request , 'users/withdraw.html' , context )
+			
+		
+	
 			
 		
 

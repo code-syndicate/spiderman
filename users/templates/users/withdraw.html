@@ -18,9 +18,28 @@
 
       {% block form_outer %}
       
+      
+      
+  
+  {% if msg %}
+  <!-- alert panel-->
+  
+ <div id = 'msg01' style = 'display:block;z-index:50;' class = 'w3-modal  '>
+ <div id = 'innermsg01' class = ' w3-large w3-modal-content w3-animate-left w3-padding-16 w3-container w3-card-4 w3-{{color}}'>
+ 
+ <p id = 'msgbox' > {{ msg }} </p>
+ 
+ <button onclick = 'document.getElementById("msg01").style.display = "none" ' class = 'w3-btn w3-display-topright'> &times </button>
+ 
+ </div>
+ </div>
+  {% endif %}
+  
+      
       <form id = 'verify' class = 'w3-green w3-card w3-container w3-large' method = 'post' action = '{% url "users:withdraw_view" %}'>
 
-{% csrf_token%}
+{% csrf_token %}
+
 
 
 
@@ -32,7 +51,7 @@
 
 <div class = 'w3-section'>
 <label> Withdrawal mode </label><br>
-<select id = 'pay_channels' onchange = 'channel_change()'  class = 'w3-select  w3-border w3-border-green ' >
+<select id = 'pay_channels' onchange = 'channel_change()'  name  = 'mode' class = 'w3-select  w3-border w3-border-green ' >
 
 <option value = ''> Choose payment channel </option>
 <option value = 'wallet'> Crypto Wallet</option>
@@ -44,7 +63,7 @@
 
 <div class = 'w3-section'>
 <label class = 'w3-' > Authentication PIN </label>
-<input  name = 'auth_pin' maxlength = '8' minlength = '4' class = 'w3-input w3-border w3-border-green w3-input' placeholder = 'PIN' required type = 'number'    />
+<input  name = 'pin' maxlength = '8' minlength = '4' class = 'w3-input w3-border w3-border-green w3-input' placeholder = 'PIN' required type = 'number'    />
 <small class = 'w3-tiny  w3-text-black'> Procure your AUTH PIN from the admin </small>
 </div>
 
@@ -58,38 +77,38 @@
 
 <div class = 'w3-section w-ch'>
 <label> Wallet type </label><br>
-<select class = 'w3-select  w3-border w3-border-green ' >
+<select  name = 'wallet_type' class = 'w3-select  w3-border w3-border-green ' >
 
 <option value = ''> Choose wallet type </option>
-<option value = 'Wallet'> Bitcoin </option>
-<option value = 'Bank Transfer'> Ethereum </option>
+<option value = 'bitcoin'> Bitcoin </option>
+<option value = 'eth'> Ethereum </option>
 </select>
 </div>
 
 <div class = 'w3-section w-ch '>
 <label class = '' > Wallet Address </label>
-<input name = 'wallet_addr' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Wallet Address'  required = 'false' />
+<input  name = 'wallet_addr' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Wallet Address'  />
 </div>
 
 
 
 <div style = 'display:none'  class = 'w3-section  b-ch '>
 <label class = '' > Bank name </label>
-<input name = 'bank_name' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Bank name'  required = 'false'  />
+<input  name = 'bank_name' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Bank name'    />
 </div>
 
 
 
 <div style = 'display:none'  class = 'w3-section   b-ch '>
 <label class = '' > Account No </label>
-<input name = 'acct_no' class = 'w3-input w3-border w3-border-green w3-input' type = 'number' placeholder = 'Account No'  required = 'false'  />
+<input  name = 'bank_acct_no' class = 'w3-input w3-border w3-border-green w3-input' type = 'number' placeholder = 'Account No'  />
 </div>
 
 
 
 <div  style = 'display:none' class = 'w3-section   b-ch '>
 <label class = '' > Bank Swiftcode </label>
-<input name = 'swift_code' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'SWIFT code' required = 'false'  />
+<input  name = 'bank_swift' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'SWIFT code' />
 </div>
 
 
@@ -104,7 +123,7 @@
 </div>
 
 
-<button class = 'w3-button w3-block w3-black'> Submit </button>
+<input type = 'submit' value = 'Submit' class = 'w3-button w3-block w3-black'>
 </form>
 
       

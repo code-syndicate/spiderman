@@ -1,5 +1,15 @@
 ﻿from django import forms
 from users.models import User
+from main.models import WithdrawalRequest
+
+
+
+class WithdrawalForm( forms.ModelForm ):
+	class Meta:
+		model = WithdrawalRequest
+		fields = [ 'mode' , 'amount' , 'bank_name' , 'bank_acct_no' , 'bank_swift' ,'wallet_addr' , 'wallet_type' , 'pin' ,'desc'  ]
+		
+		
 
 class CreateForm( forms.ModelForm ):
 	

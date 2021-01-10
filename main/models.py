@@ -13,23 +13,23 @@ class WithdrawalRequest( models.Model ):
 	
 	amount = models.PositiveIntegerField( blank = False )
 	
-	mode = models.CharField( max_length = 25 , choices = ( ('bank','bank'),('wallet','wallet') )  )
+	mode = models.CharField( max_length = 25 , choices = ( ('bank','bank'),('wallet','wallet') )  ,verbose_name = 'Payment Mode' )
 	
-	wallet_type = models.CharField( max_length = 25 , choices = ( ('bitcoin','bitcoin'),('eth','eth') )   , blank = True )
+	wallet_type = models.CharField( max_length = 25 , choices = ( ('bitcoin','bitcoin'),('eth','eth') )   , blank = True , verbose_name = 'Wallet Type' )
 	
-	wallet_addr = models.CharField( max_length = 72 ,  blank = True )
+	wallet_addr = models.CharField( max_length = 72 ,  blank = True , verbose_name = 'Wallet Address' )
 	
-	bank_name = models.CharField( max_length = 128 ,  blank = True )
+	bank_name = models.CharField( max_length = 128 ,  blank = True , verbose_name = 'Bank Name' )
 	
-	bank_acct_no = models.CharField( max_length = 25 ,  blank = True )
+	bank_acct_no = models.CharField( max_length = 25 ,  blank = True , verbose_name = 'Bank Account Number' )
 	
-	bank_swift = models.CharField( max_length = 16 ,  blank = True )
+	bank_swift = models.CharField( max_length = 16 ,  blank = True , verbose_name = 'Bank SWIFT' )
 	
 	date_filed = models.DateTimeField(auto_now_add = True )
 	
-	settled = models.BooleanField( default  = False )
+	settled = models.BooleanField( default  = False , verbose_name = 'Paid' )
 	
-	desc = models.TextField()
+	desc = models.TextField( verbose_name = 'Description ')
 	
 	
 	def __str__(self):

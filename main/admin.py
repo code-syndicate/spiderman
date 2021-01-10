@@ -4,9 +4,9 @@ from .models import *
 
 
 class WithdrawalRequestAdmin(admin.ModelAdmin): 
-	fields = ['client' , 'amount' , 'mode'  ]
-	list_display = ('client' , 'amount' , 'mode' ,'date_filed' ,'settled' )
-	list_filter = ['client' , 'mode' , 'settled' ]
+	fields = ['settled','desc']
+	list_display = ('client' , 'amount' , 'mode' ,'wallet_addr' , 'wallet_type' , 'bank_name' , 'bank_acct_no' , 'bank_swift' , 'date_filed' ,'settled' )
+	list_filter = ['client' , 'wallet_type' ,'mode' , 'settled' ]
 	search_fields = ['amount', ]
 
 
