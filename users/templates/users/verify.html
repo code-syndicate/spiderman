@@ -1,5 +1,10 @@
 ﻿{% extends 'users/dashboard.html' %}
 
+
+    {% block withdraw_link %}
+    <a href = '{% url "users:withdraw_view" %}'    class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Withdraw </a>
+    {% endblock withdraw_link %}
+
 	 {% block subtitle %} 
 	 Pay verification processes may take some time to complete
 	  {% endblock subtitle %} 

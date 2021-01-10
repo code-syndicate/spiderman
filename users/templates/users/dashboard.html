@@ -38,7 +38,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar  w3-display-container  w3-collapse w3-white w3-animate-left" style="z-index:4;width:300px;display:none" id="myPopup">
 
   <div class="w3-display-topright ">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16  w3-dark-grey w3-hide-small w3-hover-black" onclick="w3_close_x()" title="close menu"><i class="fa fa-remove fa-fw"></i>   </a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-16  w3-dark-grey w3-hide-small w3-hover-black" onclick="w3_close_x()" title="close menu"><i onclick="w3_close_x()" class="fa fa-remove fa-fw"></i>   </a>
     
     </div>
 
@@ -128,9 +128,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href="{% url 'users:dashboard_view' %}#thecoins" onclick = 'd_click()' class="w3-bar-item w3-button w3-padding"><i class="fa fa-bitcoin fa-fw"></i>  Deposit </a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Deposit History <small class = 'w3-tiny w3-text-orange' > Coming soon </small> </a>
     
-    
+    {% block withdraw_link %}
     <span  onclick = 'withdraw_click()' class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Withdraw </span>
-    
+    {% endblock withdraw_link  %}
     
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Withdrawal History  <small class = 'w3-tiny w3-text-orange' > Coming soon </small> </a>
     <a href="{% url 'users:verify_view' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-check-circle fa-fw"></i>  Verify Payment </a>
@@ -630,10 +630,11 @@ document.getElementById('msg01').style.display = 'block';
 
 function withdraw_click() {
 
+document.getElementById("msgbox").innerHTML = "Please,before proceeding to withdrawal, ensure you have procured your authentication PIN from the administrators. Thank you. <a href = '{% url  "users:withdraw_view" %}'> <button class = 'w3-button w3-khaki w3-small w3-round-large'> Proceed </button></a>";
+
 w3_close();
 
 
-document.getElementById("msgbox").innerHTML = "Please,before proceeding to withdrawal, ensure you have procured your authentication PIN from the administrators. Thank you. <a href = '{% url  "users:withdraw_view" %}'> <button class = 'w3-button w3-khaki w3-small w3-round-large'> Proceed </button></a>";
 
 document.getElementById('msg01').style.display = 'block';
 
@@ -645,7 +646,6 @@ function w3_close_x() {
   myPopup.style.display = "none";
   overlayBg.style.display = "none";
   
-  w3_close();
 }
 
 //coin click
