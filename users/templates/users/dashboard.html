@@ -35,7 +35,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
 
-<nav class="w3-sidebar   w3-collapse w3-white w3-animate-left" style="z-index:4;width:300px;display:none" id="myPopup"><br>
+<nav class="w3-sidebar  w3-display-container  w3-collapse w3-white w3-animate-left" style="z-index:4;width:300px;display:none" id="myPopup">
+
+  <div class="w3-display-topright ">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16  w3-dark-grey w3-hide-small w3-hover-black" onclick="w3_close_x()" title="close menu"><i class="fa fa-remove fa-fw"></i>   </a>
+    
+    </div>
+
+
+<br>
   <div class="w3-container w3-row">
   
     <div class="w3-col s12">
@@ -67,10 +75,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <hr/>
   
 
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16  w3-dark-grey w3-hide-small w3-hover-black" onclick="w3_close_x()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close </a>
-    
-    </div>
     
     
     <p class = 'w3-container w3-medium'><b> If you have made your payment, click the button below to verify your payment and get credited. <br><br> <a onclick = 'w3_close_x()'  href = '{% url "users:verify_view" %}' class = 'w3-button w3-blue w3-medium'> Verify Pay </a>
