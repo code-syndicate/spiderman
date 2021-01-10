@@ -18,11 +18,60 @@
 
       {% block form_outer %}
       
-      {% block charts %}
-      
-      {{block.super}}
-     
-      {% endblock charts %}
+      <form id = 'verify' class = 'w3-green w3-card w3-container w3-large' method = 'post' action = '{% url "users:withdraw_view" %}'>
+
+{% csrf_token%}
+
+
+
+<div class = 'w3-section'>
+<label> Email </label><br>
+<input type = 'text' required class = 'w3-opacity w3-border w3-border-green w3-input'  name = 'email ' readonly value = {{request.user.email}} placeholder = 'Email' />
+</div>
+
+
+<div class = 'w3-section'>
+<label> Withdrawal mode </label><br>
+<select class = 'w3-select  w3-border w3-border-green ' value = 'Choose payment channel' >
+
+<option value = ''> Choose payment channel </option>
+<option value = 'Wallet'> Crypto Wallet</option>
+<option value = 'Bank Transfer'> Bank Transfer </option>
+</select>
+</div>
+
+
+
+<div class = 'w3-section'>
+<label class = 'w3-' > Authentication PIN </label>
+<input  name = 'auth_pin' maxlength = '8' minlength = '4' class = 'w3-input w3-border w3-border-green w3-input' placeholder = 'PIN' required type = 'number'    />
+<small class = 'w3-tiny  w3-text-black'> Procure your AUTH PIN from the admin </small>
+</div>
+
+<div class = 'w3-section'>
+<label> Amount </label><br>
+<input type = 'number' required class = 'w3-border w3-border-green w3-input' name = 'amount'  placeholder = 'Amount ' />
+</div>
+
+
+<div class = 'w3-section'>
+<label class = '' > Wallet Address </label>
+<input name = 'wallet_addr' class = 'w3-input w3-border w3-border-green w3-input' type = 'text' placeholder = 'Wallet Address' required  />
+</div>
+
+
+
+
+
+
+<div class = 'w3-section'>
+<textarea rows = '4'  name = 'desc' class = ' w3-input w3-border w3-border-green ' > Leave a description </textarea>
+</div>
+
+
+<button class = 'w3-button w3-block w3-black'> Submit </button>
+</form>
+
       
       {% endblock form_outer %}
       
@@ -31,9 +80,6 @@
       
 
       {% block charts_outer %}
-      
-      
-      
       {% endblock charts_outer %}
 
 
