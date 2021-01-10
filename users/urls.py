@@ -25,7 +25,7 @@ path( 'verify-pay/', views.VerifyView.as_view() , name = 'verify_view' ),
 path( 'manage/', views.ManageView.as_view() , name = 'manage_view' ),
 
 
-path( 'withdraw/', views.ManageView.as_view() , name = 'withdraw_view' ),
+path( 'withdraw/', views.WithdrawView.as_view() , name = 'withdraw_view' ),
 
 
 

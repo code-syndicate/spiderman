@@ -118,7 +118,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href="{% url 'users:manage_view' %}" class="w3-bar-item w3-button w3-padding "><i class="fa fa-user fa-fw"></i> Account </a>
     <a href="{% url 'users:dashboard_view' %}#thecoins" onclick = 'd_click()' class="w3-bar-item w3-button w3-padding"><i class="fa fa-bitcoin fa-fw"></i>  Deposit </a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Deposit History <small class = 'w3-tiny w3-text-orange' > Coming soon </small> </a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Withdraw </a>
+    <span  onclick = 'withdraw_click()' class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Withdraw </span>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Withdrawal History  <small class = 'w3-tiny w3-text-orange' > Coming soon </small> </a>
     <a href="{% url 'users:verify_view' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-check-circle fa-fw"></i>  Verify Payment </a>
     <a href="mailto:admin@fxinvestor.net" class="w3-bar-item w3-button w3-padding"><i class="fa fa-comment fa-fw"></i>  Send a message </a>
@@ -606,6 +606,20 @@ function d_click() {
 w3_close();
 
 document.getElementById("msgbox").innerHTML = 'Please,select your preferred coin to initiate your deposit';
+
+document.getElementById('msg01').style.display = 'block';
+
+}
+
+
+//withdrawal click
+
+
+function withdraw_click() {
+
+w3_close();
+
+document.getElementById("msgbox").innerHTML = "Please,before proceeding to withdrawal, ensure you have procured your authentication PIN from the administrators. Thank you. <a href = '{% url  "users:withdraw_view" %}'> <button class = 'w3-button w3-khaki w3-small w3-round-large'> Proceed </button></a>";
 
 document.getElementById('msg01').style.display = 'block';
 

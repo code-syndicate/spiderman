@@ -1,1 +1,50 @@
 ﻿{% extends 'users/dashboard.html' %}
+
+	 {% block subtitle %} 
+	 Pay verification processes may take some time to complete
+	  {% endblock subtitle %} 
+
+
+      {% block form_outer %}
+      
+      {% block charts %}
+      
+      {{block.super}}
+     
+      {% endblock charts %}
+      
+      {% endblock form_outer %}
+      
+      
+      
+      
+
+      {% block charts_outer %}
+      
+      
+      
+      
+      {% endblock charts_outer %}
+
+
+
+	
+  {% block page_stats %}
+  
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-user"></i>  Withdrawals  </b></h5>
+    
+    <p class = 'w3-medium w3-text-green'> Ensure you have procured your one-time authentication PIN from the administrators to facilitate withdrawal</p>
+   
+   <a href = '{% url "users:dashboard_view" %}' > <p class = 'w3-button w3-tiny w3-round-xlarge w3-khaki'> Skip to deposits </p></a>
+    
+  </header>
+  
+  
+  {% endblock page_stats %}
+
+	
+  {% block coins %}
+  {% endblock coins %}

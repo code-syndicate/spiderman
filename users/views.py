@@ -16,6 +16,15 @@ class ManageView( View ):
 	def get( self, request ):
 		
 		return render( request , 'users/account.html' );
+		
+		
+
+
+#Withdraw View
+class WithdrawView( View ):
+	def get( self, request ):
+		
+		return render( request , 'users/withdraw.html' );
 			
 		
 
