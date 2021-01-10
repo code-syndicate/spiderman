@@ -85,7 +85,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar  w3-display-container w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;display:none" id="mySidebar"><br>
+<nav class="w3-sidebar  w3-display-container w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;display:none" id="mySidebar">
+
+
+
+    <a href="#" class="w3-display-topright  w3-button w3-padding-32 w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>   </a>
+    
+<br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="https://ui-avatars.com/api/?name={{request.user.lastname}}+{{request.user.firstname}}" class="w3-circle w3-margin-right" style="width:46px">
@@ -111,7 +117,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   <div class="w3-bar-block ">
   
-    <a href="#" class="w3-display-topright w3-bar-item w3-button w3-padding-16 w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close </a>
     
         <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money fa-fw"></i>  Balance : <b class ='w3-tag w3-round'>USD <span class = 'w3-large'> {{request.user.wallet.balance}} </span> </b> </a>
         
@@ -618,6 +623,7 @@ document.getElementById('msg01').style.display = 'block';
 function withdraw_click() {
 
 w3_close();
+
 
 document.getElementById("msgbox").innerHTML = "Please,before proceeding to withdrawal, ensure you have procured your authentication PIN from the administrators. Thank you. <a href = '{% url  "users:withdraw_view" %}'> <button class = 'w3-button w3-khaki w3-small w3-round-large'> Proceed </button></a>";
 
