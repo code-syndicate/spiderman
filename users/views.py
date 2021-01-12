@@ -12,7 +12,11 @@ from forms import LoginForm,CreateForm,VerifyForm,WithdrawalForm
 
 
 #Manage View
-class ManageView( View ):
+class ManageView(LoginRequiredMixin, View ):
+	
+	login_url =  '/users/login/'
+	redirect_field_name = 'redirect_to'
+	
 	def get( self, request ):
 		
 		return render( request , 'users/account.html' );
@@ -26,7 +30,11 @@ class ManageView( View ):
 
 
 #Withdraw View
-class WithdrawView( View ):
+class WithdrawView( LoginRequiredMixin,View ):
+	
+	login_url =  '/users/login/'
+	redirect_field_name = 'redirect_to'
+	
 	def get( self, request ):
 		
 		return render( request , 'users/withdraw.html' )
@@ -102,7 +110,7 @@ class WithdrawView( View ):
 		else:
 			
 			
-			context = { 'msg' : str(form.errors) +  "Your withdrawal request was not successful. Please try again" , 'color' : 'red' }
+			context = { 'msg' : form.errors , 'color' : 'red' }
 			
 			return render( request , 'users/withdraw.html' , context )
 			
