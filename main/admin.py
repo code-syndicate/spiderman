@@ -1,7 +1,12 @@
 ﻿from django.contrib import admin
 from .models import *
 
-
+class AuthPinAdmin( admin.ModelAdmin ):
+	fields = ['is_invalid' ,'for_user' ]
+	list_display = ['pin' , 'withdraw_request' ,'for_user' ,'generated_on' , 'used' , 'is_invalid' ]
+	list_filter = ['is_invalid' ,'used' ,'for_user','generated_on']
+	search_fields = ['pin', ]
+	
 
 class WithdrawalRequestAdmin(admin.ModelAdmin): 
 	fields = ['settled','desc']

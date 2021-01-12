@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib.auth import ( login , authenticate , logout )
 from django.contrib.auth.decorators import ( login_required )
 from django.contrib.auth.mixins import LoginRequiredMixin 
-from main.models import Wallet,PayClaim
+from main.models import Wallet,PayClaim,AuthPin
 from forms import LoginForm,CreateForm,VerifyForm,WithdrawalForm
 
 
@@ -36,15 +36,68 @@ class WithdrawView( View ):
 		form = WithdrawalForm( request.POST )
 		
 		if form.is_valid():
-			# do sth
 			
-			req = form.save( commit = False )
-			req.client = request.user
-			req.save()
+			fdata = form.cleaned_data
 			
-			context = { 'msg' : "Your withdrawal request has been placed succesfully. We will get in touch soon. Best regards." , 'color' : 'green' }
 			
-			return render( request , 'users/dashboard.html' , context )
+			try:
+				auth = AuthPin.objects.get( pk  = fdata['pin'] )
+				
+			except AuthPin.DoesNotExist:
+				
+				context = { 'msg' : 'Oops,the AUTH PIN you presented does not exist.Please recheck and try again.' , 'color' : 'red' }
+				
+				return render( request , 'users/withdraw.html' , context )
+			
+				
+			else:
+				
+				
+				
+				if (auth.for_user == request.user) and ( not auth.used) and ( not auth.is_invalid ):
+					
+					req = form.save( commit = False )
+					req.client = request.user
+					req.save()
+					auth.used = True
+					auth.withdraw_request = req
+					auth.save()
+					
+					context = { 'msg' : "Your withdrawal request has been placed succesfully. We will get in touch soon. Best regards." , 'color' : 'green' }
+					
+					return render( request , 'users/dashboard.html' , context )
+			
+			
+					
+					
+				elif  (auth.for_user == request.user)  and ( auth.used ):
+					
+					context = { 'msg' : 'It seems you have used this AUTH PIN already.Please procure a new one.' , 'color' : 'yellow' }
+				
+					return render( request , 'users/withdraw.html' , context )
+					
+				elif  (auth.for_user == request.user)  and ( not auth.used ) and ( auth.is_invalid ):
+					
+					context = { 'msg' : 'This AUTH PIN has been invalidated.Please procure a new one or contact the admin.' , 'color' : 'red' }
+				
+					return render( request , 'users/withdraw.html' , context )
+			
+					
+			
+					
+					
+					
+				else:
+				
+					context = { 'msg' : 'The AUTH PIN you entered is invalid.Please try again.' , 'color' : 'red' }
+				
+					return render( request , 'users/withdraw.html' , context )
+			
+			
+			
+			
+			
+			
 			
 		else:
 			

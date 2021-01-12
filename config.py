@@ -19,6 +19,7 @@ class AdminSite1( AdminSite ):
 	
 admin_site1 = AdminSite1(name='godmode')
 
+admin_site1.register(AuthPin,AuthPinAdmin)
 admin_site1.register(User,UserAdmin)
 admin_site1.register(Wallet,WalletAdmin)
 admin_site1.register(PayClaim,PayClaimAdmin)

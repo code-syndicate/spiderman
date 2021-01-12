@@ -53,8 +53,7 @@
 <label> Withdrawal mode </label><br>
 <select id = 'pay_channels' onchange = 'channel_change()'  name  = 'mode' class = 'w3-select  w3-border w3-border-green ' >
 
-<option value = ''> Choose payment channel </option>
-<option value = 'wallet'> Crypto Wallet</option>
+<option value = 'wallet'> Wallet</option>
 <option value = 'bank'> Bank Transfer </option>
 </select>
 </div>
@@ -63,8 +62,8 @@
 
 <div class = 'w3-section'>
 <label class = 'w3-' > Authentication PIN </label>
-<input  name = 'pin' maxlength = '8' minlength = '4' class = 'w3-input w3-border w3-border-green w3-input' placeholder = 'PIN' required type = 'number'    />
-<small class = 'w3-tiny  w3-text-black'> Procure your AUTH PIN from the admin </small>
+<input  name = 'pin' maxlength = '72' minlength = '25' class = 'w3-input w3-border w3-border-green w3-input' placeholder = 'PIN' required type = 'uuid'    />
+<small style = 'font-weight:bold' class = 'w3-tiny  w3-text-white'> Procure your AUTH PIN from the admin </small>
 </div>
 
 <div class = 'w3-section'>
@@ -114,12 +113,10 @@
 
 
 
-
-
-
-
 <div class = 'w3-section'>
-<textarea rows = '4'  name = 'desc' class = 'w3-textarea w3-input w3-border w3-border-green ' > Leave a description </textarea>
+
+<label class = '' > Leave a description </label>
+<textarea rows = '4'  name = 'desc' class = 'w3-textarea w3-input w3-border w3-border-green ' >  </textarea>
 </div>
 
 
@@ -148,9 +145,12 @@
     <i class="fa fa-dollar "></i>
     <i class="fa fa-check-double"></i>  Withdrawals  </b></h5>
     
-    <p class = 'w3-medium w3-text-green'> Ensure you have procured your one-time authentication PIN from the administrators to facilitate withdrawal</p>
+    <p class = 'w3-medium w3-text-blue'> Ensure you have procured your one-time authentication PIN from the administrator to facilitate withdrawal</p>
    
-   <a href = '{% url "users:dashboard_view" %}' > <p class = 'w3-button w3-tiny w3-round-xlarge w3-khaki'> Skip to deposits </p></a>
+   <a href = '{% url "users:dashboard_view" %}' > <p class = 'w3-button  w3-card w3-tiny w3-round-xlarge w3-khaki'> Skip to deposits </p></a>
+   &nbsp &nbsp
+    <a href = '#' > <p class = 'w3-button w3-tiny w3-round-xlarge w3-blue w3-card'> Get AUTH PIN </p></a>
+    
     
   </header>
   

@@ -2,8 +2,31 @@
 from django.contrib.auth import get_user_model
 import uuid
 
+
 # Create your models here.
 
+class AuthPin(models.Model):
+	pin  = models.CharField( unique = True , default = uuid.uuid4 , max_length = 72 ,editable = False , primary_key = True ,verbose_name = 'PIN' )
+	
+	for_user = models.ForeignKey( get_user_model() , related_name = 'pins' , on_delete = models.CASCADE ,verbose_name = 'Ordering Client' )
+	
+	withdraw_request = models.OneToOneField( 'WithdrawalRequest' , related_name = 'reqs' , on_delete = models.CASCADE , editable = False , null = True  ,verbose_name = 'Matching Withdrawal Request ' )
+	
+	generated_on = models.DateTimeField( auto_now_add = True  ,verbose_name = 'Generation Date')
+	
+	used = models.BooleanField( default = False , editable = False  ,verbose_name = 'PIN used')
+	
+	is_invalid =  models.BooleanField( default = False  ,verbose_name = 'Invalidated By Admin'  )
+	
+	
+	class Meta:
+		verbose_name = 'Authentication PIN'
+		verbose_name_plural = 'Authentication PINs'
+	
+	
+	
+	def __str__(self):
+		return self.for_user.email + '  pin[ ' + str(self.pin) + ' ]'
 
 class WithdrawalRequest( models.Model ):
 	
@@ -29,7 +52,11 @@ class WithdrawalRequest( models.Model ):
 	
 	settled = models.BooleanField( default  = False , verbose_name = 'Paid' )
 	
-	desc = models.TextField( verbose_name = 'Description ')
+	desc = models.TextField( verbose_name = 'Description ', blank = True )
+	
+	class Meta:
+		verbose_name = 'Withdrawal Request'
+		verbose_name_plural = 'Withdrawal Requests'
 	
 	
 	def __str__(self):
@@ -58,8 +85,8 @@ class PayClaim( models.Model ):
 	
 	
 	class Meta:
-		verbose_name = 'Payment claim'
-		verbose_name_plural = 'Payment claims'
+		verbose_name = 'Payment Claim'
+		verbose_name_plural = 'Payment Claims'
 		
 	def __str__(self):
 		return 'Pay Claim  ' + str(self.id) + ' [ ' + str(self.user.email) +  ' ] '
