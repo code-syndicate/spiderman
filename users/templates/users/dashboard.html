@@ -43,6 +43,44 @@
         // Get the DIV with overlay effect
         var overlayBg = document.getElementById("myOverlay");
 
+
+
+  //coin click
+  function coinClick(n = 0) {
+    let
+      addr = '***************'
+      ;
+    let
+      wallet = '*******';
+    if
+      (n == 1) {
+      addr = '3MLdgTDQwpnKB3iRrTNryWvauPpP5zfbvx'
+        ;
+      wallet = 'Bitcoin'
+        ;
+      selectedCurr = 1;
+    }
+    if
+      (n == 2) {
+      addr = '0x20da4428d1277841dab6b78af8b4a9cb4e9efcc9'
+        ;
+      wallet = 'Ethereum'
+        ;
+      selectedCurr = 2;
+    }
+    if
+      (n == 3) {
+      addr = '***********************'
+        ;
+      wallet = 'Tether'
+        ;
+      selectedCurr = 3;
+    }
+    document.getElementById('waddr').innerHTML = addr;
+    document.getElementById('wname').innerHTML = wallet;
+    w3_open_x();
+  }
+
         // Toggle between showing and hiding the sidebar, and add overlay effect
         function w3_open() {
           if (mySidebar.style.display === 'block') {
@@ -180,45 +218,6 @@
 </script>
 
 
-<script>
-
-  //coin click
-  function coinClick(n = 0) {
-    let
-      addr = '***************'
-      ;
-    let
-      wallet = '*******';
-    if
-      (n == 1) {
-      addr = '3MLdgTDQwpnKB3iRrTNryWvauPpP5zfbvx'
-        ;
-      wallet = 'Bitcoin'
-        ;
-      selectedCurr = 1;
-    }
-    if
-      (n == 2) {
-      addr = '0x20da4428d1277841dab6b78af8b4a9cb4e9efcc9'
-        ;
-      wallet = 'Ethereum'
-        ;
-      selectedCurr = 2;
-    }
-    if
-      (n == 3) {
-      addr = '***********************'
-        ;
-      wallet = 'Tether'
-        ;
-      selectedCurr = 3;
-    }
-    document.getElementById('waddr').innerHTML = addr;
-    document.getElementById('wname').innerHTML = wallet;
-    w3_open_x();
-  }
-
-</script>
 
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
