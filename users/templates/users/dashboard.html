@@ -23,14 +23,14 @@ window.smartsupp||(function(d) {
 
 
  <script src="https://kit.fontawesome.com/a160ae3ffc.js" crossorigin="anonymous"></script>
- 
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Calling Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/main/img/favicon.png">
     <!-- Calling Favicon -->
-    
+
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -52,49 +52,49 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-display-topright ">
     <a href="#" class="w3-bar-item w3-button w3-padding-16  w3-dark-grey w3-hide-small w3-hover-black" onclick="w3_close_x()" title="close menu"><i onclick="w3_close_x()" class="fa fa-remove fa-fw"></i>   </a>
-    
+
     </div>
 
 
 <br>
   <div class="w3-container w3-row">
-  
+
     <div class="w3-col s12">
     <h3> <b>Payment Alert</b> </h3>
     </div>
-    
+
     <div class="w3-col s12 w3-bar">
       <span> Hi  {{ request.user.firstname }}, </span><br>
-      
+
       <p> You requested to pay via <strong id ='wname' > ****** </strong>, please make your payment into the wallet  address below
       </p>
-      
+
       <h4 class ='w3-medium w3-grey w3-padding w3-round' style = 'overflow:auto' > <b id = 'waddr' > ****************</b> </h4>
-      
+
       <div class = 'w3-bar'>
-      
+
       <div  onclick = 'copyAddr()' class = 'w3-small w3-green w3-button w3-bar-item  w3-center w3-round-large ' > Copy address </div>
-      
-      
+
+
       <div style = 'margin-left:6px'  onclick = 'showQR()' class = 'w3-small w3-khaki w3-bar-item w3-button w3-center w3-round-large ' > Show QR </div>
-      
-      
+
+
       </div>
-      
+
     </div>
-    
-    
+
+
   </div>
   <hr/>
-  
 
-    
-    
+
+
+
     <p class = 'w3-container w3-medium'><b> If you have made your payment, click the button below to verify your payment and get credited. <br><br> <a onclick = 'w3_close_x()'  href = '{% url "users:verify_view" %}' class = 'w3-button w3-blue w3-medium'> Verify Pay </a>
-    </b>  
+    </b>
     </p>
-    
-    
+
+
     </nav>
 
 
@@ -107,7 +107,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
     <a href="#" class="w3-display-topright  w3-button w3-padding-32 w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>   </a>
-    
+
 <br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
@@ -115,40 +115,41 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong> {{ request.user.firstname }} </strong></span><br>
-      
+
       <a href="{% url 'main:home_view' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
-      
+
       <a href="{% url 'users:create_view' %}" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i></a>
-      
+
       <a href="{% url 'users:dashboard_view' %}" class="w3-bar-item w3-button"><i class="fa fa-dashboard"></i></a>
     </div>
   </div>
   <hr>
-  
-  
+
+
   <div class="w3-container">
     <h5>Dashboard</h5>
-    
+
   </div>
-  
-  
+
+
   <div class="w3-bar-block ">
-  
-    
+
+
         <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money fa-fw"></i>  Balance : <b class ='w3-tag w3-round'>USD <span class = 'w3-large'> {{request.user.wallet.balance}} </span> </b> </a>
-        
+
     <a href="{% url 'users:manage_view' %}" class="w3-bar-item w3-button w3-padding "><i class="fa fa-user fa-fw"></i> Account </a>
     <a href="{% url 'users:dashboard_view' %}#thecoins" onclick = 'd_click()' class="w3-bar-item w3-button w3-padding"><i class="fa fa-bitcoin fa-fw"></i>  Deposit </a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Deposit History <small class = 'w3-tiny w3-text-orange' > Coming soon </small> </a>
-    
+
     {% block withdraw_link %}
     <span  onclick = 'withdraw_click()' class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Withdraw </span>
     {% endblock withdraw_link  %}
-    
+
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Withdrawal History  <small class = 'w3-tiny w3-text-orange' > Coming soon </small> </a>
     <a href="{% url 'users:verify_view' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-check-circle fa-fw"></i>  Verify Payment </a>
      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fas fa-passport fa-fw"></i>  Get AUTH PIN </a>
-    <a href="mailto:admin@fxinvestor.net" class="w3-bar-item w3-button w3-padding"><i class="fa fa-comment fa-fw"></i>  Send a message </a>
+    <a href="mailto:managementgeneral4@gmail.com"
+       class="w3-bar-item w3-button w3-padding"><i class="fa fa-comment fa-fw"></i>  Send a message </a>
 <br><br>
   </div>
 </nav>
@@ -161,91 +162,84 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
 
-  
+
   {% block page_stats %}
-  
-  
+
+
  <!-- // Bitcoin  QR code start -->
- 
- 
+
+
  <div id = 'boxA' style = 'display:none;z-index:51;' class = 'w3-modal  '>
  <div id = 'innermsg01' class = ' w3-large w3-modal-content w3-animate-left w3-padding-16 w3-container w3-center w3-card-4 w3-white'>
- 
- <img class = 'w3-image' src = "{% static 'main/images/bitcoin.jpg' %}" alt = "QR" />
- 
+
+<img class='w3-image'
+     src="{% static 'main/images/bitcoin1.jpg' %}"
+     alt="QR" />
+
  <br/>
- 
- 
+
+
  <b class = 'w3-small' style = 'overflow:auto' >
- 
- 33WWLkKcjwcp4NsbJvNwhmwSbz7x1jVVbZ</b>
+
+3MLdgTDQwpnKB3iRrTNryWvauPpP5zfbvx</b>
  <br/>
  <small> Scan the <b>BITCOIN</b> wallet address </small>
- 
+
  <button onclick = 'document.getElementById("boxA").style.display = "none" ' class = 'w3-btn w3-display-topright'> &times </button>
- 
+
  </div>
  </div>
- 
+
  <!-- Bitcoin QR code ends -->
- 
- 
- 
- 
- 
- 
- 
- 
-  
+
+
  <!-- // Ethereum  QR code start -->
- 
- 
+
+
  <div id = 'boxB' style = 'display:none;z-index:51;' class = 'w3-modal  '>
  <div id = 'innermsg01' class = ' w3-large w3-modal-content w3-animate-left w3-padding-16 w3-container w3-center w3-card-4 w3-white'>
- 
+
  <img class = 'w3-image' src = "{% static 'main/images/ethereum.jpg' %}" alt = "QR" />
- 
+
  <br/>
- 
+
  <b class = 'w3-small' style = 'overflow:auto' >0x20da4428d1277841dab6b78af8b4a9cb4e9efcc9</b>
  <br/>
  <small> Scan the <b>ETHEREUM</b> wallet address </small>
- 
+
  <button onclick = 'document.getElementById("boxB").style.display = "none" ' class = 'w3-btn w3-display-topright'> &times </button>
- 
+
  </div>
  </div>
- 
+
  <!-- Ethereum QR code ends -->
-  
-  
-  
+
+
   {% if msg %}
   <!-- alert panel-->
-  
+
  <div id = 'msg01' style = 'display:block;z-index:50;' class = 'w3-modal  '>
  <div id = 'innermsg01' class = ' w3-large w3-modal-content w3-animate-left w3-padding-16 w3-container w3-card-4 w3-{{color}}'>
- 
+
  <p id = 'msgbox' > {{ msg }} </p>
- 
+
  <button onclick = 'document.getElementById("msg01").style.display = "none" ' class = 'w3-btn w3-display-topright'> &times </button>
- 
+
  </div>
  </div>
   {% endif %}
-  
-  
+
+
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
-    
+
     <p class = 'w3-xlarge'><i> Funds deposit</i> </p>
     <p> Select any payment method of your choice </p>
   </header>
-  
-  
-  
+
+
   {% endblock page_stats %}
 
 
@@ -255,8 +249,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-bitcoin w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3> 
-          
+          <h3>
+
       <img src="{% static 'main/images/bitcoin.png' %}" class="w3-circle w3-margin-right" style="width:46px">
           </h3>
         </div>
@@ -288,14 +282,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4> Tether <small class = 'w3-tiny w3-text-yellow' > Coming soon </small> </h4>
       </div>
     </div>
-  
-  
+
+
   <!--  <div class="w3-quarter w3-hover-shadow">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa- w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3> 
-          
+          <h3>
+
           <img src="{% static 'main/images/more.jpeg' %}" class="w3-circle w3-margin-right" style="width:46px">
           </h3>
         </div>
@@ -303,63 +297,58 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4> Happy 	Trading! </h4>
       </div>
     </div> -->
-    
-    
+
+
   </div>
-  
-  
+
+
   {% endblock coins %}
-  
+
   <div class="w3-panel">
-  
+
   <p> {% block subtitle %} Make your payment using any of the payment methods above, for other methods, click <a href = '' > here </a> {% endblock subtitle %}  </p>
-  
+
   </div>
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
-    
-    	
+
+
       {% block charts_outer %}
       {% block charts %}
-      
+
       <div class="w3-half">
-      
-      
+
+
         <h5> Charts </h5>
-        
-        
+
+
         <div style="height:560px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px; width: 100%;"><div style="height:540px; padding:0px; margin:0px; width: 100%;"><iframe src="https://widget.coinlib.io/widget?type=chart&theme=light&coin_id=859&pref_coin_id=1505" width="100%" height="536px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;line-height:14px;"></iframe></div><div style="color: #FFFFFF; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;"><a href="https://coinlib.io" target="_blank" style="font-weight: 500; color: #FFFFFF; text-decoration:none; font-size:11px">Cryptocurrency Prices</a>&nbsp;by Coinlib</div></div>
-        
-        
-      
-        
+
+
       </div>
-      
+
       {% endblock charts %}
       {% endblock charts_outer %}
-      
-      
-      
+
+
       {% block form_outer %}
       {% block form %}
-      
+
       <div class="w3-half">
-    
-    
-      
+
+
    <h5 class = '' > Verify pay here </h5>
-       
-      
+
+
    {% if form.errors %}
  <div class = 'w3-container w3-yellow'>
- 
+
  {{ form.errors }}
  </div>
  {% endif %}
- 
-     
-       
+
+
 <form id = 'verify' class = 'w3-card w3-container w3-large' method = 'post' action = '{% url "users:verify_view" %}'>
 
 {% csrf_token%}
@@ -412,19 +401,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
       </div>
-      
-      
-  
+
+
       {% endblock form %}
       {% endblock form_outer %}
-  
-      
+
+
     </div>
   </div>
   <hr>
-  
-  
-  
+
+
   		<div class = 'w3-container'>
         <h5> Fund your account in five steps </h5>
         <table class="w3-table w3-striped w3-white">
@@ -452,23 +439,20 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
             <td><i class="fa fa-asterisk w3-text-red w3-large"></i></td>
             <td> Voila!</td>
           </tr>
-          
+
         </table>
       </div>
-   
+
   <hr>
-  
-  
-  
+
+
   {% block charts_new %}
   {% endblock charts_new %}
-  
-  
-  
-  
+
+
   <div class="w3-container">
     <h5>Site Stats</h5>
-    
+
     <p>All Users</p>
     <div class="w3-white">
       <div class="w3-container w3-large  w3-padding " > <span class = 'w3-text-grey'>{{ total_users }}</span>  </div>
@@ -483,10 +467,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
     <p> Uptime </p>
     <div class="w3-grey">
-      <div class="w3-container w3-center w3-padding w3-green" style="width:{{ uptime }}%">   
-      
+      <div class="w3-container w3-center w3-padding w3-green"
+           style="width:{{ uptime }}%">
+
      {{ uptime }}%
-      
+
       </div>
     </div>
   </div>
@@ -497,49 +482,49 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
       <tr>
         <td> USA </td>
-        
+
       </tr>
       <tr>
         <td> UK </td>
-        
+
       </tr>
         <td> Spain </td>
-       
+
       </tr>
-      
-      
+
+
       </tr>
         <td> Brazil </td>
-       
+
       </tr>
-      
+
     </table><br>
    <a href = '{% url "main:home_view" %}'> <button class="w3-button w3-green "> Go Home &nbsp <i class="fa fa-arrow-right"></i></button></a>
   </div>
   <hr>
   <div class="w3-container">
     <h5>Recent Users</h5>
-    
+
     {% if last_users %}
-    
-    
+
+
     <ul class="w3-ul w3-card-4 w3-white">
-    
-    
+
+
     {% for user in last_users %}
-    
+
       <li class="w3-padding-16">
          <img src="https://ui-avatars.com/api/?name={{user.lastname}}+{{user.firstname}}" class="w3-circle w3-margin-right" style="width:46px">
         <span class="w3-large"> {{ user.firstname }} </span><br>
       </li>
-      
+
       {% endfor %}
-      
-     
+
+
     </ul>
-    
+
     {% endif %}
-    
+
   </div>
   <hr>
 
@@ -564,7 +549,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <a href = '{% url "users:login_view" %}'> Log in </a>
          <br>
         <a href = '{% url "users:create_view" %}'> Sign up </a>
-        
+
       </div>
     </div>
   </div>
@@ -700,7 +685,7 @@ document.getElementById('msg01').style.display = 'block';
 function w3_close_x() {
   myPopup.style.display = "none";
   overlayBg.style.display = "none";
-  
+
 }
 
 //coin click
@@ -709,17 +694,17 @@ function coinClick(n = 0 ){
 let addr = '***************';
 let wallet = '*******'
 
-if ( n == 1){ 
-addr = '33WWLkKcjwcp4NsbJvNwhmwSbz7x1jVVbZ';
+  if (n == 1) {
+  addr = '3MLdgTDQwpnKB    3iRrTNryWvauPpP5zfbvx';
 wallet = 'Bitcoin';
 selectedCurr = 1; }
 
-if( n == 2){ 
+  if (n == 2)  {
 addr = '0x20da4428d1277841dab6b78af8b4a9cb4e9efcc9';
 wallet = 'Ethereum';
 selectedCurr = 2; }
 
-if( n == 3){ 
+  if (n = =  3 ) {
 addr = '***********************';
 wallet = 'Tether';
 selectedCurr = 3;
