@@ -29,195 +29,6 @@
           crossorigin="anonymous"></script>
 
 
-  <script>
-
-    // Get the Sidebar
-
-
-        var selectedCurr = 0;
-
-        var myPopup = document.getElementById("myPopup");
-        var mySidebar = document.getElementById("mySidebar");
-
-
-        // Get the DIV with overlay effect
-        var overlayBg = document.getElementById("myOverlay");
-
-
-
-  //coin click
-  function coinClick(n = 0) {
-    let
-      addr = '***************'
-      ;
-    let
-      wallet = '*******';
-    if
-      (n == 1) {
-      addr = '3MLdgTDQwpnKB3iRrTNryWvauPpP5zfbvx'
-        ;
-      wallet = 'Bitcoin'
-        ;
-      selectedCurr = 1;
-    }
-    if
-      (n == 2) {
-      addr = '0x20da4428d1277841dab6b78af8b4a9cb4e9efcc9'
-        ;
-      wallet = 'Ethereum'
-        ;
-      selectedCurr = 2;
-    }
-    if
-      (n == 3) {
-      addr = '***********************'
-        ;
-      wallet = 'Tether'
-        ;
-      selectedCurr = 3;
-    }
-    document.getElementById('waddr').innerHTML = addr;
-    document.getElementById('wname').innerHTML = wallet;
-    w3_open_x();
-  }
-
-        // Toggle between showing and hiding the sidebar, and add overlay effect
-        function w3_open() {
-          if (mySidebar.style.display === 'block') {
-            mySidebar.style.display = 'none';
-            overlayBg.style.display = "none";
-          } else {
-            mySidebar.style.display = 'block';
-            overlayBg.style.display = "block";
-          }
-        }
-
-
-
-        function w3_open_x() {
-          if (myPopup.style.display === 'block') {
-            myPopup.style.display = 'none';
-            overlayBg.style.display = "none";
-          } else {
-            myPopup.style.display = 'block';
-            overlayBg.style.display = "block";
-          }
-        }
-
-        // Close the sidebar with the close button
-        function w3_close() {
-          mySidebar.style.display = "none";
-          overlayBg.style.display = "none";
-          w3_close_x();
-        }
-
-    //d_click
-
-        function d_click() {
-
-        w3_close();
-
-        document.getElementById("msgbox").innerHTML = 'Please,select your preferred coin to initiate your deposit';
-
-        document.getElementById('msg01').style.display = 'block';
-
-      }
-
-
-    //channel_change
-
-        function channel_change() {
-
-        let channel = document.getElementById('pay_channels');
-
-
-        let wlt = document.getElementsByClassName('w-ch');
-
-        let bnk = document.getElementsByClassName('b-ch');
-
-          if (channel.value === 'wallet') {
-
-
-            for (let i = 0; i < bnk.length;
-              ++i) {
-              bnk[i].style.display = 'none'
-                ;
-            }
-            for
-              (let
-              i = 0;
-              i
-              <
-              wlt.length;
-              ++i) {
-              wlt[i].style.display = 'block'
-                ;
-            }
-          }
-          if
-            (channel.value === 'bank'
-          ) {
-            for
-              (let
-              i = 0;
-              i
-              <
-              bnk.length;
-              ++i) {
-              bnk[i].style.display = 'block'
-                ;
-            }
-            for
-              (let
-              i = 0;
-              i
-              <
-              wlt.length;
-              ++i) {
-              wlt[i].style.display = 'none'
-                ;
-            }
-          }
-        }
-
-
-
-  //withdrawal click
-  function withdraw_click() {
-    document.getElementById("msgbox").innerHTML = "Please,before proceeding to withdrawal, ensure you have procured your authentication PIN from the administrators( via the chat support ). Thank you. <a href = '{% url  "users:withdraw_view" %}'> <button class = 'w3-button w3-khaki w3-small w3-round-large'> Proceed </button></a>";
-
-    w3_close();
-    document.getElementById('msg01').style.display = 'block';
-  }
-                                function w3_close_x() {
-                                  myPopup.style.display = "none";
-                                  overlayBg.style.display = "none";
-                                }
-
-                                //ShowQR
-                                function showQR(n) {
-                                  w3_close();
-                                  const bitcoin = document.getElementById('boxA');
-                                  const eth = document.getElementById('boxB');
-                                  if (selectedCurr == 1) bitcoin.style.display = 'block';
-                                  if (selectedCurr == 2) eth.style.display = 'block';
-                                }
-                                //
-                                function copyAddr() {
-                                  const
-                                    addr = document.getElementById('waddr').innerHTML;
-                                  //alert(addr);
-                                  navigator.clipboard.writeText(addr).then(() => { alert("Address Copied") }, () => {
-                                    alert("Failed to Copy Address")
-                                  });
-
-
-
-
-                                }
-</script>
-
-
 
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -899,5 +710,193 @@
 
 
   </body>
+
+<script>
+
+  // Get the Sidebar
+
+
+  var selectedCurr = 0;
+
+  var myPopup = document.getElementById("myPopup");
+  var mySidebar = document.getElementById("mySidebar");
+
+
+  // Get the DIV with overlay effect
+  var overlayBg = document.getElementById("myOverlay");
+
+
+
+  //coin click
+  function coinClick(n = 0) {
+    let
+      addr = '***************'
+      ;
+    let
+      wallet = '*******';
+    if
+      (n == 1) {
+      addr = '3MLdgTDQwpnKB3iRrTNryWvauPpP5zfbvx'
+        ;
+      wallet = 'Bitcoin'
+        ;
+      selectedCurr = 1;
+    }
+    if
+      (n == 2) {
+      addr = '0x20da4428d1277841dab6b78af8b4a9cb4e9efcc9'
+        ;
+      wallet = 'Ethereum'
+        ;
+      selectedCurr = 2;
+    }
+    if
+      (n == 3) {
+      addr = '***********************'
+        ;
+      wallet = 'Tether'
+        ;
+      selectedCurr = 3;
+    }
+    document.getElementById('waddr').innerHTML = addr;
+    document.getElementById('wname').innerHTML = wallet;
+    w3_open_x();
+  }
+
+  // Toggle between showing and hiding the sidebar, and add overlay effect
+  function w3_open() {
+    if (mySidebar.style.display === 'block') {
+      mySidebar.style.display = 'none';
+      overlayBg.style.display = "none";
+    } else {
+      mySidebar.style.display = 'block';
+      overlayBg.style.display = "block";
+    }
+  }
+
+
+
+  function w3_open_x() {
+    if (myPopup.style.display === 'block') {
+      myPopup.style.display = 'none';
+      overlayBg.style.display = "none";
+    } else {
+      myPopup.style.display = 'block';
+      overlayBg.style.display = "block";
+    }
+  }
+
+  // Close the sidebar with the close button
+  function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+    w3_close_x();
+  }
+
+  //d_click
+
+  function d_click() {
+
+    w3_close();
+
+    document.getElementById("msgbox").innerHTML = 'Please,select your preferred coin to initiate your deposit';
+
+    document.getElementById('msg01').style.display = 'block';
+
+  }
+
+
+  //channel_change
+
+  function channel_change() {
+
+    let channel = document.getElementById('pay_channels');
+
+
+    let wlt = document.getElementsByClassName('w-ch');
+
+    let bnk = document.getElementsByClassName('b-ch');
+
+    if (channel.value === 'wallet') {
+
+
+      for (let i = 0; i < bnk.length;
+        ++i) {
+        bnk[i].style.display = 'none'
+          ;
+      }
+      for
+        (let
+        i = 0;
+        i
+        <
+        wlt.length;
+        ++i) {
+        wlt[i].style.display = 'block'
+          ;
+      }
+    }
+    if
+      (channel.value === 'bank'
+    ) {
+      for
+        (let
+        i = 0;
+        i
+        <
+        bnk.length;
+        ++i) {
+        bnk[i].style.display = 'block'
+          ;
+      }
+      for
+        (let
+        i = 0;
+        i
+        <
+        wlt.length;
+        ++i) {
+        wlt[i].style.display = 'none'
+          ;
+      }
+    }
+  }
+
+
+
+  //withdrawal click
+  function withdraw_click() {
+    document.getElementById("msgbox").innerHTML = "Please,before proceeding to withdrawal, ensure you have procured your authentication PIN from the administrators( via the chat support ). Thank you. <a href = '{% url  "users:withdraw_view" %}'> <button class = 'w3-button w3-khaki w3-small w3-round-large'> Proceed </button></a>";
+
+    w3_close();
+    document.getElementById('msg01').style.display = 'block';
+  }
+  function w3_close_x() {
+    myPopup.style.display = "none";
+    overlayBg.style.display = "none";
+  }
+
+  //ShowQR
+  function showQR(n) {
+    w3_close();
+    const bitcoin = document.getElementById('boxA');
+    const eth = document.getElementById('boxB');
+    if (selectedCurr == 1) bitcoin.style.display = 'block';
+    if (selectedCurr == 2) eth.style.display = 'block';
+  }
+  //
+  function copyAddr() {
+    const
+      addr = document.getElementById('waddr').innerHTML;
+    //alert(addr);
+    navigator.clipboard.writeText(addr).then(() => { alert("Address Copied") }, () => {
+      alert("Failed to Copy Address")
+    });
+
+
+
+
+  }
+</script>
 
 </html>
