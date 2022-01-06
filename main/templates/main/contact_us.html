@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <base href="/static/main/" >
-     
+
      <!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
 var _smartsupp = _smartsupp || {};
@@ -21,8 +21,8 @@ window.smartsupp||(function(d) {
   c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
 })(document);
 </script>
-    
-    
+
+
     <!-- Calling Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Calling Favicon -->
@@ -62,55 +62,54 @@ window.smartsupp||(function(d) {
                 </div>
                 <div class="col-lg-10 col-md-7 col-sm-8 col-7">
                     <div class="icon-links d-flex align-items-center">
-                       
-                        
+
+
                         <a href="#" class="btn btn-round d-none d-sm-block blob-small">CONTACT US</a>
                     </div>
                     <div class="menu-links">
                         <nav class="main-menu white">
                             <ul>
-                            
+
                                 <li class="active">
                                     <a href="{% url 'main:home_view' %}">Home </a>
-                                    
-                                    
+
+
                                     <li class="active">
                                     <a href="{% url 'users:dashboard_view' %}"> Dashboard</a>
-                                    
+
                                 </li>
-                                    
+
                                 </li>
-                                
-                                
+
+
                                 <li class="active">
                                     <a href="{% url 'users:verify_view' %}"> Verify Pay </a>
-                                    
+
                                 </li>
-                                
-                                
+
+
                                 {% if not request.user.is_authenticated %}
-                                
+
                                 <li><a href="{% url 'users:login_view' %}">Login</a></li>
-                                
+
                                 {% else %}
-                                
+
                                 <li class="active">
                                     <a href="{% url 'users:logout_view' %}"> Logout </a>
-                                    
+
                                 </li>
-                                
+
                                 {% endif %}
-                                
+
                                         <li><a href="{% url 'users:create_view' %}">Signup</a></li>
-                                        
-                                  
+
+
                                 <li>
                                     <a href="{% url 'main:about_view' %}">About Us </a>
-                                    
 
-                                </li>      
-                                        
-                                        
+
+                                </li>
+
                             </ul>
                         </nav>
                     </div>
@@ -122,7 +121,7 @@ window.smartsupp||(function(d) {
         </div>
 
     </header>
-    
+
 
     <div class="search-popup modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -187,8 +186,7 @@ window.smartsupp||(function(d) {
                         </div>
                         <div class="icon-box-content">
                             <h5 class="f-700 fs-19 mb-10">Phone</h5>
-                            <p>Phone: (+123) 456-789</p>
-                            <p>Mob: (+123) 987-654</p>
+                            <p>Phone: 530-535-8340</p>
                         </div>
                     </div>
                 </div>
@@ -202,8 +200,7 @@ window.smartsupp||(function(d) {
                         </div>
                         <div class="icon-box-content">
                             <h5 class="f-700 fs-19 mb-10">Email</h5>
-                            <p>Info@example.com</p>
-                            <p>suspport@example.com</p>
+                            <p>managementgeneral4@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -390,7 +387,7 @@ window.smartsupp||(function(d) {
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-4 col-lg-5 mb-md-20 text-center text-lg-left">
-                    <h3 class="z-5 white f-700 lh-18 wow fadeInLeft">What type of challenge are you facing? 
+                    <h3 class="z-5 white f-700 lh-18 wow fadeInLeft">What type of challenge are you facing?
                       <span class="green italic">Let’s talk</span>
                     </h3>
                 </div>
@@ -454,7 +451,7 @@ window.smartsupp||(function(d) {
                         <li><a href="#" >Home</a></li>
                         <li><a href="about-us.html">About Us</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
-                        
+
                     </ul>
                 </div>
             </div>
